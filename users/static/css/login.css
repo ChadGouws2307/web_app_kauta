@@ -1,0 +1,29 @@
+h2 {
+    color: #000000;
+}
+
+h5 {
+    color: #696969;
+}
+
+.button1 {
+    background-color: yellow;
+    color: black;
+    border: 2px solid yellow;
+    font-weight: bold;
+    transition-duration: 0.4s;
+}
+
+.button1:hover {
+    background-color: white;
+    color: black;
+}
+
+.card {
+    border-color: black;
+    width: 40%;
+}
+
+.logo-size {
+    height: 20%;
+}

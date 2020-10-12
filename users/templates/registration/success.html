@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+{% load google_analytics %}
+{% block page_content %}
+
+<head>
+    <title>kauta - Signup Success</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/success.css' %}">
+    {% google_analytics %}
+</head>
+
+<body>
+<br>
+<br>
+<center>
+    <center>
+        <h1>Thank you for signing up!</h1>
+        <h6>We'll keep you up to date on our product launch.</h6>
+    </center>
+    <br>
+    <div class="card">
+        <center>
+            <br>
+            <a href="{% url 'election' %}" class="btn button1">Follow the US Election</a>
+            <br>
+            <br>
+            <br>
+            <h4>OR</h4>
+            <br>
+            <h2>Follow Us</h2>
+            <h6>To stay current with our latest updates!</h6>
+            <br>
+            <a href="https://www.linkedin.com/company/kalai-tech/" class="btn button2">LinkedIn</a>
+            <a href="https://www.linkedin.com/company/kalai-tech/" class="btn button2">Facebook</a>
+            <a href="https://www.linkedin.com/company/kalai-tech/" class="btn button2">Instagram</a>
+            <br>
+            <br>
+        </center>
+    </div>
+</center>
+</body>
+
+{% endblock %}

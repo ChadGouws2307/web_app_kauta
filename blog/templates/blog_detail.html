@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+{% load google_analytics %}
+{% block page_content %}
+
+<head>
+   <title>kauta - {{ post.title }}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/blog_detail.css' %}">
+    {% google_analytics %}
+</head>
+
+<body>
+<div class="col-md-8 offset-md-2">
+    <br>
+    <center>
+        <img src="{{ post.image.url }}" class="img-fluid img-max" alt="">
+    </center>
+    <h1>{{ post.title }}</h1>
+    <small>
+        {{ post.created_on.date }}
+    </small>
+    <br>
+    <br>
+    <p>{{ post.body | linebreaks }}</p>
+    <br>
+    <h3>Leave a comment:</h3>
+    <form action="/blog/{{ post.slug }}/" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.author }}
+        </div>
+        <div class="form-group">
+            {{ form.body }}
+        </div>
+        <button type="submit" class="btn button1">Submit</button>
+    </form>
+    <h3>Comments:</h3>
+    {% for comment in comments %}
+    <p>
+        On {{comment.created_on.date }}&nbsp;
+        <b>{{ comment.author }}</b> wrote:
+    </p>
+    <p>{{ comment.body }}</p>
+    <hr>
+    {% endfor %}
+</div>
+</body>
+
+{% endblock %}

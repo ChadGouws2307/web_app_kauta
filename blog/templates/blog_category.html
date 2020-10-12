@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+
+<style>
+    h2 {
+        color: #000000;
+    }
+
+    h5 {
+        color: #000000;
+    }
+
+    a {
+        color: #000000;
+    }
+
+    p {
+        color: #696969;
+    }
+
+    .card-right {
+        display: inline-block;
+        width: 85%;
+        height: 100%;
+    }
+</style>
+
+<br>
+<br>
+<div class="container">
+    {% for post in posts %}
+    <div class="card">
+        <div class="row no-gutters">
+            <div class="col">
+                <img src="{% static 'img/project2.png' %}" class="img-fluid" alt="">
+            </div>
+            <div class="card-right">
+                <div class="card-block px-2">
+                    <div class="container">
+                        <h2><a href="{% url 'blog_detail' post.pk%}">{{ post.title }}</a></h2>
+                        <small>
+                            {{ post.created_on.date }} |&nbsp;
+                            Categories:&nbsp;
+                            {% for category in post.categories.all %}
+                            <a href="{% url 'blog_category' category.name %}">
+                                {{ category.name }}
+                            </a>&nbsp;
+                            {% endfor %}
+                        </small>
+                        <p>{{ post.body | slice:":400" }}...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    {% endfor %}
+</div>
+
+{% endblock %}

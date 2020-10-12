@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+{% load google_analytics %}
+{% block page_content %}
+
+<head>
+    <title>kauta - Signup</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/signup.css' %}">
+    {% google_analytics %}
+</head>
+
+<body>
+<br>
+<center>
+  <div class="card">
+    <br>
+    <center>
+      <img src="{% static 'img/kalai_logo_1.png' %}" alt="" style="width:20%;">
+      <h2>Sign up for Free Access</h2>
+    </center>
+    <br>
+    <center>
+      {% for message in messages %}
+          <div class="alert alert-success">
+              <a class="close" href="#" data-dismiss="alert">×</a>
+              {{ message }}
+          </div>
+      {% endfor %}
+      <form method="post">
+        {% csrf_token %}
+
+        {% for field in form %}
+            <p>
+              {{ field }}
+            </p>
+        {% endfor %}
+        <small>Password: Minimum 8 characters, containing letters and numbers</small>
+        <br>
+        <br>
+        <button type="submit" class="btn button1">Sign Up</button>
+        <br>
+        <br>
+      </form>
+    </center>
+  </div>
+</center>
+</body>
+
+{% endblock %}

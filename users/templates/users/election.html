@@ -1,0 +1,173 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load google_analytics %}
+{% block page_content %}
+
+<head>
+    <title>kauta - US Election 2020</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/election.css' %}">
+    {% google_analytics %}
+</head>
+
+<body>
+<br>
+<br>
+
+{% if user.is_authenticated %}
+    <center>
+        <div class="card-deck deck-change">
+            <div class="card trump-card" style="width: 10rem;">
+              <img class="card-img-top" src="{% static 'img/trump.jpg' %}" alt="">
+              <div class="card-body">
+                <center>
+                    <h3 class="card-title bold-text">Donald Trump</h3>
+                    <h5 class="card-title trump-text">Keep America Great</h5>
+                </center>
+              </div>
+            </div>
+
+            <div class="card biden-card" style="width: 10rem;">
+              <img class="card-img-top" src="{% static 'img/biden.jpg' %}" alt="">
+              <div class="card-body">
+                <center>
+                    <h3 class="card-title bold-text">Joe Biden</h3>
+                    <h5 class="card-title biden-text">Build Back Better</h5>
+                </center>
+              </div>
+            </div>
+        </div>
+        <br>
+        <h2 class="bold-text">2020 US Election</h2>
+        <h5>3 November 2020</h5>
+        <br>
+        <br>
+
+        <div class="card polling-card">
+            <br>
+            <h2 class="bold-text"><a href="https://www.rasmussenreports.com/public_content/politics/elections/election_2020/white_house_watch_sep16" class="bold-text">Latest Rasmussen Polling</a></h2>
+            <h6>7 October 2020</h6>
+            <br>
+            <h2><span class="red-perc">Trump</span> vs <span class="blue-perc">Biden</span><span class="wit">i</span></h2>
+            <br>
+            <h2><span class="red-perc">40%</span> vs <span class="blue-perc">52%</span></h2>
+            <br>
+        </div>
+        <br>
+        <br>
+        <div class="card debate-card">
+            <br>
+            <h2 class="bold-text">Presidential Debates</h2>
+            <br>
+            <br>
+            <h3 class="bold-text">Points of Contention</h3>
+            <h5 class="debate-date">Is Biden Mentally Fit for Office?</h5>
+            <h5 class="debate-date">Has Trump Handled the COVID-19 Crisis Poorly?</h5>
+            <h5 class="debate-date">Does Reduced Policing Lead to Lawlessness?</h5>
+            <h5 class="debate-date">Is Law and Order the Key to a Safe America?</h5>
+            <h5 class="debate-date">Can Higher Taxes and Social Safety Nets Save America's Economy?</h5>
+            <h5 class="debate-date">Will Lower Taxes and Reduced Regulation Create Economic Prosperity?</h5>
+
+            <br>
+            <br>
+            <br>
+            <h3>Cape Western Reserve Univeristy</h3>
+            <h4>(Cleveland, Ohio)</h4>
+            <h6 class="debate-date">Tuesday, 29 September 2020</h6>
+            <h6>Moderated by Chris Wallace</h6>
+            <br>
+            <h3 class="bold-text">Debate Ratings</h3>
+            <h2><span class="red-perc">5</span> / 10 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Truthfulness &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; <span class="blue-perc">2</span> / 10</h2>
+            <br>
+            <h2><span class="red-perc">3</span> / 10 &nbsp; &nbsp; Strong Debate Points &nbsp; &nbsp; <span class="blue-perc">4</span> / 10</h2>
+            <br>
+            <h2><span class="red-perc">2</span> / 10 &nbsp; &nbsp; &nbsp; &nbsp; General Conduct &nbsp; &nbsp; &nbsp; &nbsp; <span class="blue-perc">4</span> / 10</h2>
+
+            <br>
+            <br>
+            <br>
+            <h3>Adrienne Arsht Center for Performing Arts</h3>
+            <h4>(Miami, Florida)</h4>
+            <h6 class="debate-date">Thursday, 15 October 2020</h6>
+            <h6>Moderated by Steve Scully</h6>
+            <br>
+            <h3 class="bold-text">Debate Performance</h3>
+            <h2><span class="red-perc">NA</span> / 10 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Truthfulness &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; <span class="blue-perc">NA</span> / 10</h2>
+            <br>
+            <h2><span class="red-perc">NA</span> / 10 &nbsp; &nbsp; Strong Debate Points &nbsp; &nbsp; <span class="blue-perc">NA</span> / 10</h2>
+            <br>
+            <h2><span class="red-perc">NA</span> / 10 &nbsp; &nbsp; &nbsp; &nbsp; General Conduct &nbsp; &nbsp; &nbsp; &nbsp; <span class="blue-perc">NA</span> / 10</h2>
+
+
+            <br>
+            <br>
+            <br>
+            <h3>Belmont Unversity</h3>
+            <h4>(Nashville, Tennessee)</h4>
+            <h6 class="debate-date">Thursday, 22 October 2020</h6>
+            <h6>Moderated by Kristen Welker</h6>
+            <br>
+            <h3 class="bold-text">Debate Performance</h3>
+            <h2><span class="red-perc">NA</span> / 10 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Truthfulness &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; <span class="blue-perc">NA</span> / 10</h2>
+            <br>
+            <h2><span class="red-perc">NA</span> / 10 &nbsp; &nbsp; Strong Debate Points &nbsp; &nbsp; <span class="blue-perc">NA</span> / 10</h2>
+            <br>
+            <h2><span class="red-perc">NA</span> / 10 &nbsp; &nbsp; &nbsp; &nbsp; General Conduct &nbsp; &nbsp; &nbsp; &nbsp; <span class="blue-perc">NA</span> / 10</h2>
+            <br>
+        </div>
+
+        <br>
+        <br>
+        <div class="card debate-card">
+            <br>
+            <h2 class="bold-text">Vice Presidential Debate</h2>
+            <br>
+            <br>
+            <h3>University of Utah</h3>
+            <h4>(Salt Lake City, Utah)</h4>
+            <h6 class="debate-date">Wednesday, 7 October 2020</h6>
+            <h6>Moderated by Susan Page</h6>
+            <br>
+            <h3 class="bold-text">Debate Ratings</h3>
+            <h2><span class="red-perc">8</span> / 10 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Truthfulness &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; <span class="blue-perc">3</span> / 10</h2>
+            <br>
+            <h2><span class="red-perc">8</span> / 10 &nbsp; &nbsp; Strong Debate Points &nbsp; &nbsp; <span class="blue-perc">5</span> / 10</h2>
+            <br>
+            <h2><span class="red-perc">9</span> / 10 &nbsp; &nbsp; &nbsp; &nbsp; General Conduct &nbsp; &nbsp; &nbsp; &nbsp; <span class="blue-perc">6</span> / 10</h2>
+            <br>
+        </div>
+        <br>
+        <br>
+
+        <div class="card debate-card">
+            <br>
+            <h2 class="bold-text">Media Perception of the Candidates</h2>
+            <br>
+            <h3 class="debate-date">How do news outlets feel about each candidate?</h3>
+            <br>
+            <h4>Coming Soon!</h4>
+            <br>
+        </div>
+    </center>
+{% else %}
+    <center>
+        <div class="card signup-card" style="width: 50%;">
+            <br>
+            <center>
+                <img src="{% static 'img/kalai_logo_1.png' %}" alt="" style="width:20%;">
+                <h2>Sign Up to Follow the Election</h2>
+                <br>
+                <a href="{% url 'signup' %}" class="btn button2">Sign Up</a>
+                <br>
+                <br>
+                <h4>OR</h4>
+                <br>
+                <a href="{% url 'login' %}" class="btn button1">Login</a>
+                <br>
+                <br>
+            </center>
+        </div>
+    </center>
+{% endif %}
+</body>
+
+{% endblock %}

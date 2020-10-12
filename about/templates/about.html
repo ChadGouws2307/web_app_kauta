@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% load static %}
+{% load google_analytics %}
+{% block page_content %}
+
+<head>
+    <title>kauta - About</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/about.css' %}">
+    {% google_analytics %}
+</head>
+
+<body>
+<br>
+<br>
+<br>
+<div class="card kalai-card">
+    <div class="row no-gutters">
+        <div class="col">
+            <center>
+                <img src="{% static 'img/kalai_logo_1.png' %}" class="img-fluid kalai" alt="">
+            </center>
+        </div>
+        <div class="card-right">
+            <div class="card-block px-2">
+                <br>
+                <br>
+                <div class="container">
+                    <center>
+                        <h2>Our Story</h2>
+                    </center>
+                    <br>
+                    <h5>Kauta was born from an entrepreneurial need to democratize investing knowledge and financial information.</h5>
+                    <h5>We believe that everyone should have financial freedom, so we designed this platform for you to achieve that through investing in the stock market. </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+<div class="card">
+    <div class="row no-gutters">
+        <div class="card-right">
+            <div class="card-block px-2">
+                <div class="container">
+                    <br>
+                    <center>
+                        <h2>Our Principles</h2>
+                    </center>
+                    <br>
+                    <h5>
+                        <ul>
+                            <li>Democratize Investing Knowledge and Information</li>
+                            <li>Enable Everyone's Financial Freedom</li>
+                            <li>Educate People about Financial Literacy and Investing</li>
+                            <li>Build a passionate investing community</li>
+                        </ul>
+                    </h5>
+                    <br>
+                    <center>
+                        <a href="{% url 'blog_index' %}" class="btn button1">Our Blog</a>
+                        <a href="{% url 'signup' %}" class="btn button2">Get Early Access</a>
+                    </center>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <img src="{% static 'img/pexels-photo-265087.jpeg' %}" class="img-fluid" alt="">
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+<div class="card social-card">
+    <div class="row no-gutters">
+        <div class="col">
+            <center>
+                <img src="{% static 'img/social_media.png' %}" class="img-fluid social" alt="">
+            </center>
+        </div>
+        <div class="card-right">
+            <div class="card-block px-2">
+                <br>
+                <br>
+                <br>
+                <div class="container">
+                    <center>
+                        <h2>Follow Us</h2>
+                    </center>
+                    <br>
+                    <center>
+                        <h5>Stay current with our latest updates!</h5>
+                    </center>
+                    <br>
+                    <br>
+                    <center>
+                        <a href="https://www.linkedin.com/company/kalai-tech/" class="btn button3">LinkedIn</a>
+                        <a href="https://www.linkedin.com/company/kalai-tech/" class="btn button3">Facebook</a>
+                        <a href="https://www.linkedin.com/company/kalai-tech/" class="btn button3">Instagram</a>
+                        <a href="{% url 'blog_index' %}" class="btn button2">Our Blog</a>
+                    </center>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+</body>
