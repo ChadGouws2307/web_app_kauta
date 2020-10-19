@@ -18,3 +18,7 @@ a {
 .img-max {
     max-height: 375px;
 }
+
+.bold-text {
+    font-weight: bold;
+}
