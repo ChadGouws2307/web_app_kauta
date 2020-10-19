@@ -2,6 +2,10 @@ a {
     color: #000000;
 }
 
+p {
+    font-size: 20px;
+}
+
 .button1 {
     background-color: black;
     color: white;

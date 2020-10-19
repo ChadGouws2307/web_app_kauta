@@ -3,7 +3,7 @@
 {% block page_content %}
 
 <head>
-   <title>kauta - {{ post.title }}</title>
+    <title>kauta - {{ post.title }}</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/blog_detail.css' %}">
 </head>
 
@@ -14,12 +14,29 @@
         <img src="{{ post.image.url }}" class="img-fluid img-max" alt="">
     </center>
     <h1>{{ post.title }}</h1>
-    <small>
-        {{ post.created_on.date }}
-    </small>
+    <h5>{{ post.summary | linebreaks }}</h5>
+    <small>{{ post.created_on.date }}</small>
     <br>
     <br>
-    <p>{{ post.body | linebreaks }}</p>
+    <p>{{ post.intro | linebreaks }}</p>
+    <h5>{{ post.head_1 | linebreaks }}</h5>
+    <p>{{ post.body_1 | linebreaks }}</p>
+    <center><img src="{{ post.image_1.url }}" class="img-fluid img-max" alt=""></center>
+    <br>
+    <h5>{{ post.head_2 | linebreaks }}</h5>
+    <p>{{ post.body_2 | linebreaks }}</p>
+    <center><img src="{{ post.image_2.url }}" class="img-fluid img-max" alt=""></center>
+    <br>
+    <h5>{{ post.head_3 | linebreaks }}</h5>
+    <p>{{ post.body_3 | linebreaks }}</p>
+    <h5>{{ post.head_4 | linebreaks }}</h5>
+    <p>{{ post.body_4 | linebreaks }}</p>
+    <center><img src="{{ post.image_3.url }}" class="img-fluid img-max" alt=""></center>
+    <br>
+    <h5>{{ post.head_5 | linebreaks }}</h5>
+    <p>{{ post.body_5 | linebreaks }}</p>
+    <h5>{{ post.conclusion_head | linebreaks }}</h5>
+    <p>{{ post.conclusion | linebreaks }}</p>
     <br>
     <h3>Leave a comment:</h3>
     <form action="/blog/{{ post.slug }}/" method="post">
