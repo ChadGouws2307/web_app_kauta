@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'about',
     'blog',
     'projects',
-    'analytical',
+    'google_analytics',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -147,4 +147,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 LOGIN_REDIRECT_URL = "us-election"
 LOGOUT_REDIRECT_URL = "home"
 
-GOOGLE_ANALYTICS_PROPERTY_ID = 'UA-1234567-8'
+GOOGLE_ANALYTICS = {
+    'google_analytics_id': 'UA-180724986-1',
+}

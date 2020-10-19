@@ -29,6 +29,7 @@ urlpatterns = [
     path('pricing/', views.pricing_view, name='pricing_index'),
     path('projects/', include('projects.urls')),
     path('blog/', include('blog.urls')),
+    path('djga/', include('google_analytics.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
