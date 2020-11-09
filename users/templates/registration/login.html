@@ -13,37 +13,38 @@
 <br>
 <br>
 <center>
-  <div class="card">
-    <br>
-    <center>
-      <img src="{% static 'img/kalai_logo_1.png' %}" alt="" style="width:20%">
-      <h2>Please sign in</h2>
+      <div class="card">
         <br>
-    </center>
+        <center>
+          <img src="{% static 'img/kalai_logo_1.png' %}" alt="" style="width:20%">
+          <h2>Please sign in</h2>
+            <br>
+        </center>
 
-    <center>
-      {% for message in messages %}
-              <div class="alert alert-success">
-                  <a class="close" href="#" data-dismiss="alert">×</a>
+        <center>
+          {% for message in messages %}
+                  <div class="alert alert-success">
+                      <a class="close" href="#" data-dismiss="alert">×</a>
 
-                  {{ message }}
+                      {{ message }}
 
-              </div>
-      {% endfor %}
-      <form method="post">
-        {% csrf_token %}
-
-          {% for field in form %}
-            <p>
-              {{ field }}
-            </p>
+                  </div>
           {% endfor %}
+          <form method="post">
+            {% csrf_token %}
+
+              {% for field in form %}
+                <p>
+                  {{ field }}
+                </p>
+              {% endfor %}
+              <br>
+            <button type="submit" class="btn button1">Login</button>
+          </form>
           <br>
-        <button type="submit" class="btn button1">Login</button>
-      </form>
-      <br>
-    </center>
-  </div>
+        </center>
+      </div>
+    <br>
 </center>
 </body>
 {% endblock %}
