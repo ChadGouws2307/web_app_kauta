@@ -6,149 +6,146 @@
 <head>
     <title>kauta - Home</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
 <br>
 <br>
 <br>
-<div class="card">
+
+<div class="container">
     <div class="row no-gutters">
-        <div class="card-right">
-            <div class="card-block px-2">
+        <div class="col-md-7">
+            <div class="container">
                 <br>
-                <div class="container">
-                    <br>
-                    <center>
-                        <h2>Big Data Analytics for Every Investor</h2>
-                    </center>
-                    <br>
-                    <h5>Kauta is an easy-to-use analytics platform that provides stock market information and investment analysis.</h5>
-                    <h5>We use Machine Learning and Big Data to help you make great investments and build financial freedom.</h5>
-                    <br>
-                    <center>
-                        <a href="{% url 'signup' %}" class="btn button1">Get Early Access</a>
-                    </center>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <img src="{% static 'img/photo-1551288049-bebda4e38f71.jpg' %}" class="img-fluid" alt="">
-        </div>
-    </div>
-</div>
-
-<br>
-<br>
-<div class="card">
-    <div class="row no-gutters">
-        <div class="col">
-            <img src="{% static 'img/pexels-photo-669610.jpeg' %}" class="img-fluid" alt="">
-        </div>
-        <div class="card-right">
-            <div class="card-block px-2">
-                <div class="container">
-                    <br>
-                    <center>
-                        <h2>Automated Investment Analysis</h2>
-                    </center>
-                    <br>
-                    <h5>We do all the hard work, so you don't have to.</h5>
-                    <h5>We collect and analyse the latest news, annual reports and financial statements to give you an edge in the market.</h5>
-                    <h5>You just need to buy the shares through your online broker!</h5>
-                    <br>
-                    <center>
-                        <a href="{% url 'pricing_index' %}" class="btn button2">Read More</a>
-                    </center>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<br>
-<br>
-<div class="card">
-    <div class="row no-gutters">
-        <div class="card-right">
-            <div class="card-block px-2">
+                <center>
+                    <h2>Big Data Analytics for Every Investor</h2>
+                </center>
                 <br>
-                <div class="container">
-                    <br>
-                    <center>
-                        <h2>Its All About You</h2>
-                    </center>
-                    <br>
-                    <h5>We understand that investing is time-consuming and complicated. With our platform, the process is easy and effective - you can research and monitor your investments in real time to maximize return and minimize risk.</h5>
-                    <br>
-                    <center>
-                        <a href="{% url 'pricing_index' %}" class="btn button3">Coming Soon!</a>
-                    </center>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <img src="{% static 'img/money-2724241_960_720.webp' %}" class="img-fluid" alt="">
-        </div>
-    </div>
-</div>
-
-<br>
-<br>
-<div class="card flag-us-card">
-    <div class="row no-gutters">
-        <div class="col">
-            <center>
-                <img src="{% static 'img/us-map-flag.jpg' %}" class="img-fluid flag-us" alt="">
-            </center>
-        </div>
-        <div class="card-right">
-            <div class="card-block px-2">
-                <div class="container">
-                    <br>
-                    <center>
-                        <h2>Follow the US Election</h2>
-                    </center>
-                    <br>
-                    <h5>Sign up to follow the latest US Election updates!</h5>
-                    <h5>Check out news sentiment, the latest polling data and candidate predictions for November 3rd.</h5>
-                    <h5>Who will it be? Donald Trump or Joe Biden?</h5>
-                    <br>
-                    <center>
-                        <a href="{% url 'election' %}" class="btn button1">Who Will Emerge Victorious?</a>
-                    </center>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<br>
-<br>
-<div class="card">
-    <div class="row no-gutters">
-        <div class="card-right">
-            <div class="card-block px-2">
+                <h5>Kauta is an easy-to-use analytics platform that provides stock market information and investment analysis.</h5>
+                <h5>We use Machine Learning and Big Data to help you make great investments and build financial freedom.</h5>
                 <br>
-                <div class="container">
-                    <br>
-                    <center>
-                        <h2>We're Launching Soon!</h2>
-                    </center>
-                    <br>
-                    <h5>Our first product is launching soon and we're very excited to join you on your investing journey!</h5>
-                    <h5>Sign up below for early access and updates on our product release!</h5>
-                    <br>
-                    <center>
-                        <a href="{% url 'signup' %}" class="btn button3">Get Early Access</a>
-                    </center>
-                </div>
+                <center>
+                    <a href="{% url 'signup' %}" class="btn button1">Get Early Access</a>
+                </center>
+                <br>
             </div>
         </div>
-        <div class="col">
-            <img src="{% static 'img/project3.png' %}" class="img-fluid" alt="">
+        <div class="col-md-5">
+            <img src="{% static 'img/photo-1551288049-bebda4e38f71.jpg' %}" class="card-img" alt="">
         </div>
     </div>
 </div>
+<br>
+<br>
+<br>
+
+<div class="container">
+    <div class="row no-gutters">
+        <div class="col-md-5">
+            <img src="{% static 'img/pexels-photo-669610.jpeg' %}" class="card-img img-disappear" alt="">
+        </div>
+        <br>
+        <div class="col-md-7">
+            <div class="container">
+                <center>
+                    <h2>Automated Investment Analysis</h2>
+                </center>
+                <br>
+                <h5>We do all the hard work, so you don't have to.</h5>
+                <h5>We collect and analyse the latest news, annual reports and financial statements to give you an edge in the market.</h5>
+                <h5>You just need to buy the shares through your online broker!</h5>
+                <br>
+                <center>
+                    <a href="{% url 'pricing_index' %}" class="btn button2">Read More</a>
+                </center>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+
+<div class="container">
+    <div class="row no-gutters">
+        <div class="col-md-7">
+            <div class="container">
+                <br>
+                <center>
+                    <h2>Its All About You</h2>
+                </center>
+                <br>
+                <h5>We understand that investing is time-consuming and complicated. With our platform, the process is easy and effective - you can research and monitor your investments in real time to maximize return and minimize risk.</h5>
+                <br>
+                <center>
+                    <a href="{% url 'pricing_index' %}" class="btn button3">Coming Soon!</a>
+                </center>
+                <br>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <img src="{% static 'img/money-2724241_960_720.webp' %}" class="card-img" alt="">
+        </div>
+    </div>
+</div>
+<br>
+<br>
+
+<div class="container">
+    <div class="row no-gutters">
+        <div class="col-md-5">
+            <img src="{% static 'img/us-map-flag.jpg' %}" class="card-img img-disappear" alt="">
+        </div>
+        <br>
+        <div class="col-md-7">
+            <div class="container">
+                <br>
+                <br>
+                <br>
+                <center>
+                    <h2>Follow the US Election</h2>
+                </center>
+                <br>
+                <h5>Sign up to follow the latest US Election updates!</h5>
+                <h5>Check out news sentiment, the latest polling data and candidate predictions for November 3rd.</h5>
+                <h5>Who will it be? Donald Trump or Joe Biden?</h5>
+                <br>
+                <center>
+                    <a href="{% url 'election' %}" class="btn button1">Who Will Emerge Victorious?</a>
+                </center>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+
+<div class="container">
+    <div class="row no-gutters">
+        <div class="col-md-7">
+            <div class="container">
+                <br>
+                <center>
+                    <h2>We're Launching Soon!</h2>
+                </center>
+                <br>
+                <h5>Our first product is launching soon and we're very excited to join you on your investing journey!</h5>
+                <h5>Sign up below for early access and updates on our product release!</h5>
+                <br>
+                <center>
+                    <a href="{% url 'signup' %}" class="btn button3">Get Early Access</a>
+                </center>
+                <br>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <img src="{% static 'img/project3.png' %}" class="card-img" alt="">
+        </div>
+    </div>
+</div>
+<br>
+<br>
 </body>
 {% endblock %}

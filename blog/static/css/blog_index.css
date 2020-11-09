@@ -23,3 +23,15 @@ p {
 .card-blog {
     border-color: black;
 }
+
+div.blog {
+    max-width: 70%;
+    margin: auto;
+}
+
+
+div.ex2 {
+    max-width: 100px;
+    margin: auto;
+    border-color: green;
+}

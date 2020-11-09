@@ -72,18 +72,8 @@ h5 {
     color: black;
 }
 
-.big-data {
-    height: 54%;
-}
-
-.invest-plant {
-    height: 59%;
-}
-
-.flag-us {
-    height: 105%;
-}
-
-.flag-us-card {
-    height: 55%;
+@media screen and (max-width: 640px) {
+  .img-disappear {
+    display: none;
+  }
 }

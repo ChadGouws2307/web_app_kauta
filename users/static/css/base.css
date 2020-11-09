@@ -55,3 +55,8 @@
     width:4.5%;
     margin: 9px;
 }
+
+.navbar-light {
+    color: black;
+    border-color: black;
+}

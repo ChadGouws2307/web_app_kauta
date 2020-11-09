@@ -20,7 +20,8 @@ p {
 }
 
 .img-max {
-    max-height: 375px;
+    height: 60%;
+    width: 60%;
 }
 
 .bold-text {

@@ -1,3 +1,5 @@
+import random
+
 from django.contrib.auth import login, authenticate
 from .forms import SignUpForm, LoginForm
 from django.shortcuts import render, redirect
@@ -5,11 +7,19 @@ from django.contrib import messages
 
 
 def dashboard_view(request):
-    return render(request, "users/dashboard.html")
+    view = random.random()
+    if view >= 0.5:
+        return render(request, "users/dashboard.html")
+    else:
+        return render(request, "users/dashboard.html")
 
 
 def election_view(request):
-    return render(request, 'users/election.html')
+    view = random.random()
+    if view >= 0.5:
+        return render(request, 'users/election.html')
+    else:
+        return render(request, 'users/election.html')
 
 
 def signup_view(request):
@@ -34,7 +44,12 @@ def signup_view(request):
             return redirect('success')
         else:
             messages.error(request, str(form.errors))
-    return render(request, 'registration/signup.html', {'form': form})
+
+    view = random.random()
+    if view >= 0.5:
+        return render(request, 'registration/signup.html', {'form': form})
+    else:
+        return render(request, 'registration/signup.html', {'form': form})
 
 
 def login_view(request):

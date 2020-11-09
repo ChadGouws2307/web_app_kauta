@@ -88,3 +88,9 @@ h5 {
 .kalai-card {
     height: 54%;
 }
+
+@media screen and (max-width: 640px) {
+  .img-disappear {
+    display: none;
+  }
+}

@@ -1,3 +1,5 @@
+import random
+
 from django.shortcuts import render
 from .models import Post, Comment
 from .forms import CommentForm
@@ -8,7 +10,12 @@ def blog_index(request):
     context = {
         "posts": posts,
     }
-    return render(request, "blog_index.html", context)
+
+    view = random.random()
+    if view >= 0.5:
+        return render(request, "blog_index_v2.html", context)
+    else:
+        return render(request, "blog_index_v2.html", context)
 
 
 def blog_category(request, category):
@@ -20,7 +27,12 @@ def blog_category(request, category):
         "category": category,
         "posts": posts
     }
-    return render(request, "blog_category.html", context)
+
+    view = random.random()
+    if view >= 0.5:
+        return render(request, "blog_category.html", context)
+    else:
+        return render(request, "blog_category.html", context)
 
 
 def blog_detail(request, slug):
@@ -44,5 +56,10 @@ def blog_detail(request, slug):
         "comments": comments,
         "form": form,
     }
-    return render(request, "blog_detail.html", context)
+
+    view = random.random()
+    if view >= 0.5:
+        return render(request, "blog_detail.html", context)
+    else:
+        return render(request, "blog_detail.html", context)
 

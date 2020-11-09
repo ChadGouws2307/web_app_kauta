@@ -1,7 +1,6 @@
 .trump-card {
     border-color: red;
     font-weight: bold;
-    width: 50%;
 }
 
 .trump-text {
@@ -12,7 +11,6 @@
 .biden-card {
     border-color: blue;
     font-weight: bold;
-    width: 50%;
 }
 
 .biden-text {
@@ -21,7 +19,7 @@
 }
 
 .deck-change {
-    width: 60%;
+    width: 75%;
 }
 
 .bold-text {
@@ -81,7 +79,7 @@
 
 .debate-card {
     border-color: black;
-    width: 70%;
+    width: 90%;
 }
 
 .signup-card {

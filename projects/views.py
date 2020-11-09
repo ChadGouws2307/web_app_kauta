@@ -1,3 +1,5 @@
+import random
+
 from django.shortcuts import render
 from projects.models import Project
 
@@ -7,7 +9,12 @@ def project_index(request):
     context = {
         'projects': projects
     }
-    return render(request, 'project_index.html', context)
+
+    view = random.random()
+    if view >= 0.5:
+        return render(request, 'project_index.html', context)
+    else:
+        return render(request, 'project_index.html', context)
 
 
 def project_detail(request, pk):
@@ -15,4 +22,9 @@ def project_detail(request, pk):
     context = {
         'project': project
     }
-    return render(request, 'project_detail.html', context)
+
+    view = random.random()
+    if view >= 0.5:
+        return render(request, 'project_detail.html', context)
+    else:
+        return render(request, 'project_detail.html', context)
