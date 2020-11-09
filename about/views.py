@@ -23,5 +23,5 @@ def pricing_view(request):
     if view >= 0.5:
         return render(request, 'pricing_index.html', {})
     else:
-        return render(request, 'pricing_index.html', {})
+        return render(request, 'pricing_index_v2.html', {})
 

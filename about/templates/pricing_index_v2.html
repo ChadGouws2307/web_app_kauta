@@ -1,0 +1,60 @@
+<!doctype html>
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+
+<head>
+    <title>kauta - Pricing</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/pricing_index.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+<br>
+<br>
+<center>
+    <div class="card-deck card-price">
+        <div class="card">
+            <center>
+                <div class="card-header">
+                    <h3>Free</h3>
+                </div>
+                <br>
+                <h1><span>R0 </span><span class="card-year">/ yr</span></h1>
+                <br>
+                <h6>Follow the US Election</h6>
+                <h6>Early Access - Investing Insights</h6>
+                <h6>Stock Market Overview</h6>
+                <h6>Warren Buffett Indicator</h6>
+                <h6>Stay Updated with our Product Launch!</h6>
+                <br>
+                <a href="{% url 'signup' %}" class="btn button3">Sign Up for Free</a>
+                <br>
+                <br>
+            </center>
+        </div>
+        <br>
+        <div class="card">
+            <center>
+                <div class="card-header">
+                    <h3>Pilot - Launching Soon!</h3>
+                </div>
+                <br>
+                <h1><span>TBD </span><span class="card-year">/ yr</span></h1>
+                <br>
+                <h6>Balance Sheet Analysis</h6>
+                <h6>Revenue and Cash Flow Analysis</h6>
+                <h6>Sentiment Analysis (News/SENS)</h6>
+                <h6>Fair Value Estimation</h6>
+                <h6>Capital Efficiency Analysis</h6>
+                <br>
+                <a href="{% url 'signup' %}" class="btn free-signup">Sign Up for Early Access</a>
+                <br>
+                <br>
+            </center>
+        </div>
+    </div>
+</center>
+</body>
+
+{% endblock %}
