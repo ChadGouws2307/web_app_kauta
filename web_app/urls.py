@@ -26,9 +26,14 @@ urlpatterns = [
     path('', include('users.urls')),
     path('', views.home_view, name='home'),
     path('about/', views.about_view, name='about'),
+    path('about_/', views.about_view_v2, name='about_v2'),
     path('pricing/', views.pricing_view, name='pricing_index'),
+    path('pricing_/', views.pricing_view_v2, name='pricing_index_v2'),
     path('projects/', include('projects.urls')),
     path('blog/', include('blog.urls')),
+    path('finfolio/', include('finfolio.urls')),
+    path('privacy-notice/', views.privacy_view, name='privacy'),
+    path('terms-and-conditions/', views.terms_view, name='terms'),
     path('djga/', include('google_analytics.urls')),
 ]
 

@@ -12,7 +12,11 @@
 <div class="col-md-8 offset-md-2">
     <br>
     <center>
-        <img src="{{ post.image.url }}" class="img-fluid img-max" alt="">
+        {% if post.image.url is not NULL %}
+            <img src="{{ post.image.url }}" class="img-fluid img-max" alt="">
+        {% else %}
+            <br>
+        {% endif %}
     </center>
     <h1>{{ post.title }}</h1>
     <h5>{{ post.summary | linebreaks }}</h5>
@@ -22,22 +26,42 @@
     <p>{{ post.intro | linebreaks }}</p>
     <h5>{{ post.head_1 | linebreaks }}</h5>
     <p>{{ post.body_1 | linebreaks }}</p>
-    <center><img src="{{ post.image_1.url }}" class="img-fluid img-max" alt=""></center>
+    <center>
+        {% if post.image_1.url is not NULL %}
+            <img src="{{ post.image_1.url }}" class="img-fluid img-max" alt="">
+        {% else %}
+            <br>
+        {% endif %}
+    </center>
     <br>
     <h5>{{ post.head_2 | linebreaks }}</h5>
     <p>{{ post.body_2 | linebreaks }}</p>
-    <center><img src="{{ post.image_2.url }}" class="img-fluid img-max" alt=""></center>
+    <center>
+        {% if post.image_2.url is not NULL %}
+            <img src="{{ post.image_2.url }}" class="img-fluid img-max" alt="">
+        {% else %}
+            <br>
+        {% endif %}
+    </center>
     <br>
     <h5>{{ post.head_3 | linebreaks }}</h5>
     <p>{{ post.body_3 | linebreaks }}</p>
     <h5>{{ post.head_4 | linebreaks }}</h5>
     <p>{{ post.body_4 | linebreaks }}</p>
-    <center><img src="{{ post.image_3.url }}" class="img-fluid img-max" alt=""></center>
+    <center>
+        {% if post.image_3.url is not NULL %}
+            <img src="{{ post.image_3.url }}" class="img-fluid img-max" alt="">
+        {% else %}
+            <br>
+        {% endif %}
+    </center>
     <br>
     <h5>{{ post.head_5 | linebreaks }}</h5>
     <p>{{ post.body_5 | linebreaks }}</p>
     <h5>{{ post.conclusion_head | linebreaks }}</h5>
     <p>{{ post.conclusion | linebreaks }}</p>
+    <br>
+    <small>Legal Disclaimer: This Content is for informational purposes only, you should not construe any such information or other material as legal, tax, investment, financial, or other advice. Nothing contained on our Site constitutes a solicitation, recommendation, endorsement, or offer to buy or sell any securities or other financial instruments in this or in any other jurisdiction.</small>
     <br>
     <h3>Leave a comment:</h3>
     <form action="/blog/{{ post.slug }}/" method="post">

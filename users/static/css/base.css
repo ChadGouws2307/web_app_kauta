@@ -49,6 +49,7 @@
 
 .bottom-navbar {
     background-color: #ffff00;
+    color: #000000;
 }
 
 .logo-size {
@@ -58,5 +59,15 @@
 
 .navbar-light {
     color: black;
-    border-color: black;
 }
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover, a:focus {
+    text-decoration: none;
+    color: #000000;
+}
+

@@ -19,7 +19,13 @@ h5 {
     color: black;
 }
 
-.card {
+card-signup {
     border-color: black;
-    width: 40%;;
+    width: 40%;
+}
+
+div.a {
+    font-size: 450%;
+    font-weight: bold;
+    text-align: left;
 }

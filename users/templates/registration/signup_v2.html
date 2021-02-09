@@ -1,0 +1,67 @@
+<!doctype html>
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+
+<head>
+    <title>kauta - Signup</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/signup.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+<br>
+<br>
+<br>
+<center>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 offset-md-1">
+                <br>
+                <br>
+                <br>
+                <br>
+                <div class="a">kauta</div>
+                <h3 class="text-left">Invest in the next <strong>Amazon</strong></h3>
+            </div>
+            <br>
+            <div class="col-md-5 offset-md-1">
+                <div class="container shadow bg-light">
+                    <br>
+                    <center>
+                      <h2>Sign up for Free Access</h2>
+                    </center>
+                    <br>
+                    <center>
+                      {% for message in messages %}
+                          <div class="alert alert-success">
+                              <a class="close" href="#" data-dismiss="alert">×</a>
+                              {{ message }}
+                          </div>
+                      {% endfor %}
+                      <form method="post">
+                        {% csrf_token %}
+
+                        {% for field in form %}
+                            <p>
+                              {{ field }}
+                            </p>
+                        {% endfor %}
+                        <br>
+                        <button type="submit" class="btn button1">Sign Up</button>
+                        <br>
+                        <br>
+                      </form>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+</center>
+<br>
+<br>
+<br>
+<br>
+</body>
+
+{% endblock %}

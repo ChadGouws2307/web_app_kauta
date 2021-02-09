@@ -47,6 +47,8 @@ ALLOWED_HOSTS = []                                  # 'kauta.io', 'www.kauta.io'
 # Application definition
 
 INSTALLED_APPS = [
+    'finfolio',
+    'companies',
     'users',
     'about',
     'blog',
@@ -148,5 +150,5 @@ LOGIN_REDIRECT_URL = "us-election"
 LOGOUT_REDIRECT_URL = "home"
 
 GOOGLE_ANALYTICS = {
-    'google_analytics_id': 'UA-180724986-1',
+    'google_analytics_id': 'UA-123456789-1',                            # UA-180724986-1
 }

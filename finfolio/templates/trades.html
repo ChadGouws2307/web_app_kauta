@@ -1,0 +1,58 @@
+<!doctype html>
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+
+<head>
+    <title>kauta - Trades</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/trades.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+<br>
+<br>
+<div class="container">
+    <center><h1><strong>Your Trades (Beta)</strong></h1></center>
+    <br>
+    {% if user.is_authenticated and user.is_staff %}
+    <center>
+        <a href="{% url 'trade_form' %}" class="btn button2">Add Trade</a>
+        <a href="{% url 'portfolio' %}" class="btn button2">Portfolio</a>
+    </center>
+    <br>
+    <table>
+        <tr>
+            <th>Company</th>
+            <th>Ticker</th>
+            <th>Date</th>
+            <th>No. of Shares</th>
+            <th>Price</th>
+        </tr>
+        {% for trade in user_trades %}
+        <tr>
+            <td>{{ trade.company }} </td>
+            <td>{{ trade.company.ticker }} </td>
+            <td>{{ trade.date }} </td>
+            <td>{{ trade.no_of_shares }} </td>
+            <td>{{ trade.price }} </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+        <br>
+        <br>
+        <center><h1>The Next Generation Portfolio Manager</h1></center>
+        <br>
+        <br>
+        <center><h4>COMING SOON!</h4></center>
+        <br>
+        <br>
+        <br>
+    {% endif %}
+</div>
+
+<br>
+</body>
+
+{% endblock %}
