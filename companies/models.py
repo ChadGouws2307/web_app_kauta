@@ -34,31 +34,3 @@ class CompanyStock(models.Model):
 
     def __str__(self):
         return f"{self.name}"
-
-
-class CompanyFinancials(models.Model):
-    company_name = models.ForeignKey(CompanyStock, on_delete=models.CASCADE, blank=False)
-    period_ending = models.DateField(default=datetime.date(1658, 1, 1), blank=False)
-    year = models.IntegerField(blank=False)
-
-    report_period_length = (
-        ('f', 'Full Year'),
-        ('h', 'Half Year'),
-        ('q', 'Quarterly')
-    )
-
-    full_half_quarter = models.CharField(max_length=1, choices=report_period_length, blank=False,
-                                         help_text='Length of Reporting Period')
-    currencies = (
-        ('usd', 'USD'),
-        ('zar', 'ZAR'),
-        ('gbp', 'GBP')
-    )
-    reporting_currency = models.CharField(max_length=3, choices=currencies, blank=True, help_text='Reporting Currency')
-    revenue = models.IntegerField(blank=True, help_text='In Billions')
-    cost_of_sales = models.IntegerField(blank=True, help_text='In Billions')
-    gross_profit = models.IntegerField(blank=True, help_text='In Billions')
-    net_profit = models.IntegerField(blank=True, help_text='In Billions')
-
-    def __str__(self):
-        return f"{self.company_name}, {self.full_half_quarter}, {self.period_ending}"
