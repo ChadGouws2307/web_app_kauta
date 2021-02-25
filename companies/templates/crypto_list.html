@@ -1,0 +1,36 @@
+<!doctype html>
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+
+<head>
+    <title>kauta - List of Cryptocurrencies</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/stock_list.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+<br>
+<br>
+<div class="container">
+    <center><h1><strong>Cryptocurrencies</strong></h1></center>
+    <br>
+    <br>
+    <table>
+        <tr>
+            <th>Currency</th>
+            <th>Ticker</th>
+        </tr>
+        {% for crypto in cryptos %}
+        <tr>
+            <td>{{ crypto.name }} </td>
+            <td>{{ crypto.ticker }} </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<br>
+</body>
+
+{% endblock %}

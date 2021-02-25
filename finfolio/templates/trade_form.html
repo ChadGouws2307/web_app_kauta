@@ -20,6 +20,9 @@
         <a href="{% url 'trades' %}" class="btn button2">Trades</a>
         <a href="{% url 'portfolio' %}" class="btn button2">Portfolio</a>
     </center>
+    <br>
+    <h6><strong>{{ trade_confirmation }}</strong><h6>
+        <br>
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}

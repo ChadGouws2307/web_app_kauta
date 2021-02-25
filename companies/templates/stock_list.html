@@ -1,0 +1,42 @@
+<!doctype html>
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+
+<head>
+    <title>kauta - List of Stock Market Companies</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/stock_list.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+<br>
+<br>
+<div class="container">
+    <center><h1><strong>Stock Market Companies</strong></h1></center>
+    <br>
+    <br>
+    <table>
+        <tr>
+            <th>Company</th>
+            <th>Ticker</th>
+            <th>Listed Country</th>
+            <th>Sector</th>
+            <th>Industry</th>
+        </tr>
+        {% for stock in stocks %}
+        <tr>
+            <td>{{ stock.name }} </td>
+            <td>{{ stock.ticker }} </td>
+            <td>{{ stock.listed_country }} </td>
+            <td>{{ stock.sector }} </td>
+            <td>{{ stock.industry }} </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<br>
+</body>
+
+{% endblock %}

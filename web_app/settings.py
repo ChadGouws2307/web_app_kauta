@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True                                        # Set to False in production
 
 CSRF_COOKIE_SECURE = True                           # to avoid transmitting the CSRF cookie over HTTP accidentally.
 SESSION_COOKIE_SECURE = True                        # to avoid transmitting the session cookie over HTTP accidentally.
@@ -35,13 +35,13 @@ SESSION_COOKIE_SECURE = True                        # to avoid transmitting the 
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 
-SECURE_SSL_REDIRECT = True                        # Set to True in production
+SECURE_SSL_REDIRECT = False                         # Set to True in production
 
 SECURE_HSTS_SECONDS = 86400                         # 1 day
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
 
-ALLOWED_HOSTS = ['kauta.io', 'www.kauta.io']                                  # 'kauta.io', 'www.kauta.io'
+ALLOWED_HOSTS = []                                  # 'kauta.io', 'www.kauta.io'
 
 
 # Application definition
@@ -150,5 +150,5 @@ LOGIN_REDIRECT_URL = "about"
 LOGOUT_REDIRECT_URL = "home"
 
 GOOGLE_ANALYTICS = {
-    'google_analytics_id': 'UA-180724986-1',                            # UA-180724986-1
+    'google_analytics_id': 'UA-123456789-1',                            # UA-180724986-1
 }
