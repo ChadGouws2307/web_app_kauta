@@ -1,0 +1,90 @@
+<!doctype html>
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+
+<head>
+    <title>kauta - Trade File Upload</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/trades.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+<br>
+<br>
+<center>
+    <h1><strong>Trade File Upload (Beta)</strong></h1>
+</center>
+<br>
+{% if user.is_authenticated and user.is_staff %}
+<center>
+    <a href="{% url 'trade_form' %}" class="btn button2">Add Trade</a>
+    <a href="{% url 'trades' %}" class="btn button2">Trades</a>
+    <a href="{% url 'portfolio' %}" class="btn button2">Portfolio</a>
+</center>
+<br>
+<br>
+<br>
+<div class="container">
+    <div class="row no-gutters">
+        <div class="col-md-7">
+            <div class="container">
+                <br>
+                <h6><strong>{{ upload_ind }}</strong></h6>
+                <br>
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <br>
+                    <br>
+                    <button type="submit" class="btn button3">Upload Trades</button>
+                    <br>
+                </form>
+                <br>
+                <br>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="container shadow bg-light">
+                <br>
+                <center>
+                    <p><strong>File format must be .CSV as shown here</strong></p>
+                </center>
+                <br>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <div class="container">
+                                <p>ticker,date,price,shares</p>
+                                <p>amzn,01-03-2021,2500,100</p>
+                                <p>aapl,28-02-2021,120,500</p>
+                                <p>fb,23-01-2021,90,803</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <center><a href="{% url 'how_to_upload_trade_file' %}" style="color:blue">How to upload Trade Files</a></center>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>
+{% else %}
+<br>
+<br>
+<center><h1>The Next Generation Portfolio Manager</h1></center>
+<br>
+<br>
+<center><h4>COMING SOON!</h4></center>
+<br>
+<br>
+<a href="{% url 'signup' %}" class="btn signup">Sign Up!</a>
+<br>
+{% endif %}
+<br>
+<br>
+
+</body>
+
+{% endblock %}

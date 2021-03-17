@@ -29,8 +29,8 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True                                        # Set to False in production
 
-CSRF_COOKIE_SECURE = True                           # to avoid transmitting the CSRF cookie over HTTP accidentally.
-SESSION_COOKIE_SECURE = True                        # to avoid transmitting the session cookie over HTTP accidentally.
+CSRF_COOKIE_SECURE = False                           # True in production - avoid transmitting the CSRF cookie over HTTP
+SESSION_COOKIE_SECURE = False                        # True in production - avoid transmitting the session cookie over HTTP
 
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
@@ -47,6 +47,7 @@ ALLOWED_HOSTS = []                                  # 'kauta.io', 'www.kauta.io'
 # Application definition
 
 INSTALLED_APPS = [
+    'tools',
     'finfolio',
     'companies',
     'users',
@@ -85,6 +86,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -144,11 +146,16 @@ STATIC_URL = '/static/'
 STATIC_ROOT = '/home/kautuboy/public_html/static'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = '/home/kautuboy/public_html/media'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')                           # MEDIA_ROOT = '/home/kautuboy/public_html/media'
 
 LOGIN_REDIRECT_URL = "about"
 LOGOUT_REDIRECT_URL = "home"
 
-GOOGLE_ANALYTICS = {
-    'google_analytics_id': 'UA-123456789-1',                            # UA-180724986-1
-}
+if DEBUG:                                                       # Dev Environment
+    GOOGLE_ANALYTICS = {
+        'google_analytics_id': 'UA-123456789-1',
+    }
+else:                                                           # Prod Environment
+    GOOGLE_ANALYTICS = {
+        'google_analytics_id': 'UA-180724986-1',
+    }

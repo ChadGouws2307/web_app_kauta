@@ -1,0 +1,160 @@
+<!doctype html>
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+
+<head>
+    <title>kauta - How to Upload Trade Files</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/trades.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+<br>
+<br>
+<center>
+    <h1><strong>How to Upload Trade Files</strong></h1>
+</center>
+<br>
+<br>
+
+{% if user.is_authenticated %}
+<div class="container">
+    <div class="row no-gutters justify-content-center">
+        <div class="col-md-9">
+            <div class="container shadow bg-light">
+                <br>
+                <center><h4>Why you should use Trade Files</h4></center>
+                <br>
+                <h6>Trade files are the easiest way to get your trade history into our system. Many brokers will give
+                    you a .csv file of all the trades you have made. This can then formatted as shown below and uploaded
+                    into our system.It is much easier than using our Trade Form which only allows you to input one trade
+                    at a time.
+                </h6>
+                <h6>We are constantly adding new features and soon you'll be able to view your portfolio as it currently
+                    stands. We plan to also add features that allow you to view you portfolio at historical points in
+                    time, so that you can analyse what you did right and wrong, and then improve your investing process.
+                </h6>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+
+<div class="container">
+    <center><h3>File Structure</h3></center>
+    <br>
+    <div class="row no-gutters">
+        <div class="col-md-6">
+            <div class="container shadow bg-light">
+                <br>
+                <center>
+                    <p><strong>.CSV file Structure</strong></p>
+                </center>
+                <br>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-10">
+                            <div class="container">
+                                <p class="description"><em>Header &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em>ticker,date,price,shares</p>
+                                <p class="description"><em>Trade 1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em>amzn,01-03-2021,2500,100</p>
+                                <p class="description"><em>Trade 2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em>aapl,28-02-2021,120,500</p>
+                                <p class="description"><em>Trade 3 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em>fb,23-01-2021,90,803</p>
+                                <p class="description"><em>. . . &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em>. . .</p>
+                                <p class="description"><em>Trade n &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em>aapl,01-01-2021,110,400</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="container">
+                <br>
+                <center>
+                    <p><strong>.CSV file Structure Explained</strong></p>
+                </center>
+                <br>
+                <div class="container">
+                    <p class="description"><em>&nbsp;&nbsp;&nbsp;Header &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em>Column names for file processing (compulsory)</p>
+                    <p class="description"><em>&nbsp;&nbsp;&nbsp;Trade 1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em>Data for the 1st trade</p>
+                    <p class="description"><em>&nbsp;&nbsp;&nbsp;Trade 2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em>Data for the 2nd trade</p>
+                    <p class="description"><em>&nbsp;&nbsp;&nbsp;Trade 3 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em>Data for the 3rd trade</p>
+                    <p class="description"><em>&nbsp;&nbsp;&nbsp;. . . &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em>. . .</p>
+                    <p class="description"><em>&nbsp;&nbsp;&nbsp;Trade n &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em>Data for the nth trade</p>
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<center><a href="{% url 'pca_file_upload' %}" class="btn button2">Return to PCA</a></center>
+<br>
+<br>
+
+<center>
+    <h3><strong>If the .CSV were a Table</strong></h3>
+</center>
+<br>
+
+<div class="container">
+    <table>
+        <tr>
+            <th class="description">Ticker <em>(for each company share)</em></th>
+            <th class="description">Date <em>(the trade was made)</em></th>
+            <th class="description">Price <em>(at which you bought or sold)</em></th>
+            <th class="description">Shares <em>(No. of shares purchased/sold)</em></th>
+        </tr>
+        {% for trade in trades %}
+        <tr>
+            {% for item in trade %}
+            <td>{{ item }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+<br>
+<br>
+<br>
+
+<center>
+    <h3><strong>Important Notes on the File that you Submit</strong></h3>
+</center>
+<br>
+<div class="container">
+    <div class="container">
+        <ul>
+            <li>The correct data must be in each of the correct columns in your file. If dates are in the Ticker column,
+                the process will fail.
+            </li>
+            <li>Make sure that the ticker symbols are correct - in the future, when we add features that link our
+                different tools together, we want to be able to give you the best information and experience possible.
+            </li>
+            <li>Please note the date format - we know this date format works in our system and have not tested others.
+            </li>
+        </ul>
+    </div>
+</div>
+<br>
+<br>
+{% else %}
+    <br>
+    <br>
+    <center><h1>Sign up to use our free Stock Tools</h1></center>
+    <br>
+    <br>
+    <br>
+    <a href="{% url 'signup' %}" class="btn signup">Sign Up!</a>
+    <br>
+{% endif %}
+
+</body>
+
+{% endblock %}

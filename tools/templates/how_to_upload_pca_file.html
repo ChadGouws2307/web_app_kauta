@@ -1,0 +1,269 @@
+<!doctype html>
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+
+<head>
+    <title>kauta - How to use PCA</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/trades.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+<br>
+<br>
+<center>
+    <h1><strong>How to Use PCA for Stock Correlation</strong></h1>
+</center>
+<br>
+<br>
+
+{% if user.is_authenticated %}
+    <div class="container">
+        <div class="row no-gutters justify-content-center">
+            <div class="col-md-9">
+                <div class="container shadow bg-light">
+                    <br>
+                    <center><h4>What is Principal Component Analysis (PCA)?</h4></center>
+                    <br>
+                    <h6>Principal Component Analysis is a dimensionality-reduction algorithm used to reduce the
+                        dimensionality of large data sets, by transforming a large set of variables into a smaller
+                        one that still contains as much information (in the form of variance) about the data as
+                        possible.
+                    </h6>
+                    <br>
+
+                    <center><h4>Why is it Important in Investing?</h4></center>
+                    <br>
+                    <h6>The most important aspect of investing is Risk Management. In other words, how can you reduce
+                        the chances of your portfolio losing money? In this case, PCA is used to calculate the
+                        correlation between a set of stocks and build 'Principal Components' that can be used as a
+                        proxy for a group of similar stocks.
+                    </h6>
+                    <h6>Therefore, if you reduce the correlation in your portfolio, you reduce the chances of losing
+                        money because the stocks in your portfolio are less likely to move up or down together
+                        in a given time period.
+                    </h6>
+                    <h6>For example, most technology stocks (Apple, Amazon, Microsoft,
+                        Facebook etc) are highly correlated. Lets say Apple dives 10% this week - the odds are pretty
+                        high that the other technology stocks will drop about 10% too. So, to prevent your portfolio
+                        taking a 10% dive in one week, having stocks that aren't in the technology sector (aka aren't
+                        correlated), for example Ford Motor Company and Bank of America, the drop in your portfolio
+                        is likely to be far less severe.
+                    </h6>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+
+    <div class="container">
+        <center>
+            <h3>An Example</h3>
+        </center>
+        <p>Below is a table of 8 stocks with their respective daily closing prices. Our goal is to build 3 groups
+            of stocks that are similar to each other, where each group is a set of highly correlated stocks
+            (ie they tend to move up together and down together). </p>
+        <br>
+        <table>
+            <tr>
+                <th>Date</th>
+                <th>aapl</th>
+                <th>amzn</th>
+                <th>fb</th>
+                <th>nee</th>
+                <th>baa</th>
+                <th>cat</th>
+                <th>peg</th>
+                <th>air</th>
+            </tr>
+            {% for price in prices %}
+            <tr>
+                {% for item in price %}
+                <td>{{ item }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+        <br>
+        <p>So, we upload our file (example below) and set the number of desired components to 3. The PCA then calculates
+            3 Principal Components (which to us are three groups of correlated stocks), outputs the components and tells
+            us which stocks fit best in which group.
+        </p>
+        <br>
+        <center><h5>We get an output like this:</h5></center>
+        <table>
+            <tr>
+                <td><strong>Component 1</strong></td>
+                <td>aapl</td>
+                <td>amzn</td>
+                <td>fb</td>
+                <td>nee</td>
+                <td>cat</td>
+                <td>peg</td>
+            </tr>
+            <tr>
+                <td><strong>Component 2</strong></td>
+                <td>baa</td>
+                <td>air</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong>Component 3</strong></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+        <br>
+        <p>You will notice that Component 1 has six stocks, Component 2 has two and Component 3 has none. It is normal
+            for different groups to have different numbers of stocks or even no stocks, depending on how well a stock is
+            correlated with any particular group. In this example, the stocks correlate well with Components 1 and 2,
+            but not with Component 3 (so Component 3 is actually unnecessary).
+        </p>
+        <p>You will often find that stocks in similar sectors or industries are grouped together - in this example,
+            Apple (AAPL), Amazon (AMZN) and Facebook (FB) are all technology stocks and therefore highly correlated.
+            Whereas Boeing (BAA) and Airbus (AIR) are both in the Aerospace and Defense industry, and are highly
+            correlated with each other, but not with the technology stocks. Therefore, Component 1 can actually be
+            labeled 'Technology' and Component 2 can be labeled 'Aerospace & Defense'.
+        </p>
+    </div>
+    <br>
+    <br>
+
+    <div class="container">
+        <center><h3>File Structure</h3></center>
+        <br>
+        <div class="row no-gutters">
+            <div class="col-md-6">
+                <div class="container shadow bg-light">
+                    <br>
+                    <center>
+                        <p><strong>.CSV file Structure</strong></p>
+                    </center>
+                    <br>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-md-10">
+                                <div class="container">
+                                    <p class="description"><em>Header &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em>aapl,amzn,fb,nee,baa,cat,peg,air</p>
+                                    <p class="description"><em>Period 1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em>100,150,60,170,301,122,24,83</p>
+                                    <p class="description"><em>Period 2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em>110,163,67,171,250,123,25,74</p>
+                                    <p class="description"><em>Period 3 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em>112,169,66,174,255,115,23,77</p>
+                                    <p class="description"><em>. . . &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em>. . .</p>
+                                    <p class="description"><em>Period n &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em>109,145,64,176,245,130,25,73</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="container">
+                    <br>
+                    <center>
+                        <p><strong>.CSV file Structure Explained</strong></p>
+                    </center>
+                    <br>
+                    <div class="container">
+                        <p class="description"><em>&nbsp;&nbsp;&nbsp;Header &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em>Ticker symbol for each stock you want to correlate</p>
+                        <p class="description"><em>&nbsp;&nbsp;&nbsp;Period 1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em>Each ticker's closing price for the 1st period</p>
+                        <p class="description"><em>&nbsp;&nbsp;&nbsp;Period 2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em>Each ticker's closing price for the 2nd period</p>
+                        <p class="description"><em>&nbsp;&nbsp;&nbsp;Period 3 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em>Each ticker's closing price for the 3rd period</p>
+                        <p class="description"><em>&nbsp;&nbsp;&nbsp;. . . &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em>. . .</p>
+                        <p class="description"><em>&nbsp;&nbsp;&nbsp;Period n &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em>Each ticker's closing price for the nth period</p>
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <center><a href="{% url 'pca_file_upload' %}" class="btn button2">Return to PCA</a></center>
+    <br>
+    <br>
+
+    <center>
+        <h3><strong>If the .CSV were a Table</strong></h3>
+    </center>
+    <br>
+
+    <div class="container">
+        <table>
+            <tr>
+                <th>Date</th>
+                <th>aapl</th>
+                <th>amzn</th>
+                <th>fb</th>
+                <th>nee</th>
+                <th>baa</th>
+                <th>cat</th>
+                <th>peg</th>
+                <th>air</th>
+            </tr>
+            {% for price in prices %}
+            <tr>
+                {% for item in price %}
+                <td>{{ item }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <br>
+    <br>
+    <br>
+
+    <center>
+        <h3><strong>Important Notes on the File that you Submit</strong></h3>
+    </center>
+    <br>
+    <div class="container">
+        <div class="container">
+            <ul>
+                <li>The length of the period for which you want to perform PCA does not matter. It can be the daily, weekly,
+                    monthly or even yearly closing prices for each stock. </li>
+                <li>Make sure the time period and time frame for each stock is the same.</li>
+                <li>The dates for each stock's prices must align. The model will not output the correct correlations if
+                    Apple stock's February data is in the March row. Apple's March data must go with Amazon's March data and
+                    both of theirs must go with Walmart's March data etc.</li>
+                <li>Ensure that you have a good amount of data. 3 monthly periods is too little to calculate an effective
+                    correlation. A good rule of thumb is to use a minimum of 10 - 12 periods, but less than 500.</li>
+                <li>Generally, stock correlations diverge when the time frame you are working with becomes too long compared
+                    with the time period you have chosen for each data point. Consider what you are looking for - if your
+                    time frame is decades, daily prices is overkill and unlikely to yield effective information. Whereas
+                    monthly data for a few decades will do well. If your goal is to calculate correlation for a matter of
+                    months, then daily or weekly data should do the trick. A time horizon of 12 months could use monthly or
+                    weekly data, but daily data might not yield as effective results as the other two.</li>
+            </ul>
+        </div>
+    </div>
+    <br>
+    <br>
+{% else %}
+    <br>
+    <br>
+    <center><h1>Sign up to use our free Stock Tools</h1></center>
+    <br>
+    <center><h3>There is no limit on how much you can use it, or how you can use it.</h3></center>
+    <br>
+    <a href="{% url 'signup' %}" class="btn signup">Sign Up!</a>
+    <br>
+    <br>
+    <br>
+{% endif %}
+
+</body>
+
+{% endblock %}

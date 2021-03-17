@@ -3,3 +3,5 @@ PyMySQL==0.10.1
 Pillow
 django-google-analytics-app
 python-dotenv
+pandas
+scikit-learn

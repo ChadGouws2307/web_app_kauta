@@ -13,36 +13,42 @@
 <br>
 <br>
 <div class="container">
-    <center><h1><strong>Input Trade (Beta)</strong></h1></center>
+    <center>
+        <h1><strong>Input Trade (Beta)</strong></h1>
+    </center>
     <br>
     {% if user.is_authenticated and user.is_staff %}
     <center>
         <a href="{% url 'trades' %}" class="btn button2">Trades</a>
         <a href="{% url 'portfolio' %}" class="btn button2">Portfolio</a>
+        <a href="{% url 'trade_file_upload' %}" class="btn button2">Upload Trades</a>
     </center>
     <br>
-    <h6><strong>{{ trade_confirmation }}</strong><h6>
+    <h6><strong>{{ trade_confirmation }}</strong></h6>
+    <br>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
         <br>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <br>
-            <br>
-            <button type="submit" class="btn button3">Submit Trade</button>
-            <br>
-        </form>
+        <br>
+        <button type="submit" class="btn button3">Submit Trade</button>
+        <br>
+    </form>
     {% else %}
-        <br>
-        <br>
-        <center><h1>The Next Generation Portfolio Manager</h1></center>
-        <br>
-        <br>
-        <center><h4>COMING SOON!</h4></center>
-        <br>
-        <br>
-        <br>
+    <br>
+    <br>
+    <center><h1>The Next Generation Portfolio Manager</h1></center>
+    <br>
+    <br>
+    <center><h4>COMING SOON!</h4></center>
+    <br>
+    <br>
+    <a href="{% url 'signup' %}" class="btn signup">Sign Up!</a>
+    <br>
     {% endif %}
 </div>
+<br>
+<br>
 
 </body>
 

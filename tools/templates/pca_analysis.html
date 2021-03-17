@@ -1,0 +1,47 @@
+<!doctype html>
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+
+<head>
+    <title>kauta - Principal Component Analysis</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/trades.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+<br>
+<br>
+<div class="container">
+    <center><h1><strong>Principal Component Analysis</strong></h1></center>
+    <br>
+    {% if user.is_authenticated%}
+    <br>
+    <table>
+        {% for group in corr %}
+        <tr>
+            {% for item in group %}
+            <td>{{ item }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <br>
+    {% else %}
+    <br>
+    <br>
+    <center><h1>Sign Up to use this Tool for Free!</h1></center>
+    <br>
+    <center><h3>There is no limit on how much you can use it, or how you can use it.</h3></center>
+    <br>
+    <a href="{% url 'signup' %}" class="btn signup">Sign Up</a>
+    <br>
+    <br>
+    <br>
+    {% endif %}
+</div>
+
+</body>
+
+{% endblock %}

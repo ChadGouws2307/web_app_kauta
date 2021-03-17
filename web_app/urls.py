@@ -22,7 +22,7 @@ from django.conf import settings
 
 
 urlpatterns = [
-    path('Sit1babIedm-Ilh2d/', admin.site.urls),                # Admin page Sit1babIedm-Ilh2d
+    path('admin/', admin.site.urls),                # Admin page Sit1babIedm-Ilh2d
     path('', include('users.urls')),
     path('', views.home_view, name='home'),
     path('about/', views.about_view, name='about'),
@@ -32,11 +32,13 @@ urlpatterns = [
     path('projects/', include('projects.urls')),
     path('blog/', include('blog.urls')),
     path('finfolio/', include('finfolio.urls')),
+    path('analysis/', include('tools.urls')),
     path('', include('companies.urls')),
     path('privacy-notice/', views.privacy_view, name='privacy'),
     path('terms-and-conditions/', views.terms_view, name='terms'),
     path('djga/', include('google_analytics.urls')),
 ]
 
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

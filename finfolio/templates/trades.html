@@ -13,17 +13,19 @@
 <br>
 <br>
 <div class="container">
-    <center><h1><strong>Your Trades (Beta)</strong></h1></center>
+    <center>
+        <h1><strong>Your Trades (Beta)</strong></h1>
+    </center>
     <br>
     {% if user.is_authenticated and user.is_staff %}
     <center>
         <a href="{% url 'trade_form' %}" class="btn button2">Add Trade</a>
         <a href="{% url 'portfolio' %}" class="btn button2">Portfolio</a>
+        <a href="{% url 'trade_file_upload' %}" class="btn button2">Upload Trades</a>
     </center>
     <br>
     <table>
         <tr>
-            <th>Company</th>
             <th>Ticker</th>
             <th>Date</th>
             <th>No. of Shares</th>
@@ -31,8 +33,7 @@
         </tr>
         {% for trade in user_trades %}
         <tr>
-            <td>{{ trade.company }} </td>
-            <td>{{ trade.company.ticker }} </td>
+            <td>{{ trade.ticker }} </td>
             <td>{{ trade.date }} </td>
             <td>{{ trade.no_of_shares }} </td>
             <td>{{ trade.price }} </td>
@@ -40,15 +41,16 @@
         {% endfor %}
     </table>
     {% else %}
-        <br>
-        <br>
-        <center><h1>The Next Generation Portfolio Manager</h1></center>
-        <br>
-        <br>
-        <center><h4>COMING SOON!</h4></center>
-        <br>
-        <br>
-        <br>
+    <br>
+    <br>
+    <center><h1>The Next Generation Portfolio Manager</h1></center>
+    <br>
+    <br>
+    <center><h4>COMING SOON!</h4></center>
+    <br>
+    <br>
+    <a href="{% url 'signup' %}" class="btn signup">Sign Up!</a>
+    <br>
     {% endif %}
 </div>
 

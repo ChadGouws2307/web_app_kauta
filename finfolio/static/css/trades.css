@@ -39,3 +39,12 @@ tr:nth-child(even) {
     background-color: white;
     color: black;
 }
+
+.description {
+  color: black;
+}
+
+.description em {
+  color: red;
+  font-style: normal;
+}
