@@ -71,3 +71,9 @@ a:hover, a:focus {
     color: #000000;
 }
 
+p {
+    color: black;
+    line-height: 150%;
+    font-size: 120%;
+}
+

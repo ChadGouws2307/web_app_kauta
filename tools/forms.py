@@ -1,4 +1,6 @@
 from django import forms
+from django.forms.widgets import NumberInput
+
 from .models import PCAFile
 
 

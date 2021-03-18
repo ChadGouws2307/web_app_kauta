@@ -10,3 +10,7 @@ def choose_template_option(template_1, template_2):
         return template_1
     else:
         return template_2
+
+
+def log_web_page_view():
+    pass

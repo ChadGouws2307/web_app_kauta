@@ -30,7 +30,7 @@ urlpatterns = [
     path('projects/', include('projects.urls')),
     path('blog/', include('blog.urls')),
     path('finfolio/', include('finfolio.urls')),
-    path('analysis/', include('tools.urls')),
+    path('tools/', include('tools.urls')),
     path('', include('companies.urls')),
     path('privacy-notice/', views.privacy_view, name='privacy'),
     path('terms-and-conditions/', views.terms_view, name='terms'),

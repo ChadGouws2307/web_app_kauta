@@ -47,6 +47,7 @@ ALLOWED_HOSTS = []                                  # 'kauta.io', 'www.kauta.io'
 # Application definition
 
 INSTALLED_APPS = [
+    'user_analytics',
     'tools',
     'finfolio',
     'companies',
