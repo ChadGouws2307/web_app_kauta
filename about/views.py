@@ -1,37 +1,39 @@
 from django.shortcuts import render, redirect
-import random
+
+from users.forms import EmailForm
+
+from user_analytics import analytics as ana
 
 
 def home_view(request):
-    view = random.random()
-    if view >= 0.5:
-        return render(request, 'home.html', {})
+    if request.method == 'GET':
+        form = EmailForm()
+        ind = ''
     else:
-        return render(request, 'home.html', {})
+        form = EmailForm(request.POST)
+        if form.is_valid():
+            email = form.save()
+            email.save()
+            ind = 'Thank you!'
+        else:
+            ind = ''
+    context = {
+        'form': form,
+        'ind': ind,
+    }
+
+    template = ana.choose_template_option('home.html', 'home_v2.html')
+    return render(request, template, context)
 
 
 def about_view(request):
-    view = random.random()
-    if view >= 0.5:
-        return render(request, 'about.html', {})
-    else:
-        return redirect('about_v2')
-
-
-def about_view_v2(request):
-    return render(request, 'about_v2.html', {})
+    template = ana.choose_template_option('about.html', 'about_v2.html')
+    return render(request, template, {})
 
 
 def pricing_view(request):
-    view = random.random()
-    if view >= 0.5:
-        return render(request, 'pricing_index.html', {})
-    else:
-        return redirect('pricing_index_v2')
-
-
-def pricing_view_v2(request):
-    return render(request, 'pricing_index_v2.html', {})
+    template = ana.choose_template_option('pricing_index.html', 'pricing_index_v2.html')
+    return render(request, template, {})
 
 
 def terms_view(request):
@@ -40,4 +42,3 @@ def terms_view(request):
 
 def privacy_view(request):
     return render(request, 'privacy_notice.html', {})
-

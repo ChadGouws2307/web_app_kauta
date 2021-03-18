@@ -3,6 +3,8 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.forms.widgets import PasswordInput, TextInput
 
+from .models import Email
+
 
 class SignUpForm(UserCreationForm):
     #first_name = forms.CharField(max_length=100, help_text='Last Name')
@@ -21,3 +23,11 @@ class SignUpForm(UserCreationForm):
 class LoginForm(AuthenticationForm):
     username = forms.CharField(widget=TextInput(attrs={'class': 'validate', 'placeholder': 'Username'}))
     password = forms.CharField(widget=PasswordInput(attrs={'placeholder': 'Password'}))
+
+
+class EmailForm(forms.ModelForm):
+    email = forms.EmailField(widget=TextInput(attrs={'class': 'validate', 'placeholder': 'Email address'}))
+
+    class Meta:
+        model = Email
+        fields = ['email']
