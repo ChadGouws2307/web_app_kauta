@@ -6,7 +6,7 @@ import datetime
 
 class Trade(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    ticker = models.CharField(max_length=8)
+    ticker = models.CharField(max_length=8, default='None')
     no_of_shares = models.IntegerField(blank=False, help_text='Number of Shares in Trade')
     date = models.DateTimeField(blank=False, default=datetime.datetime.today(), help_text='Date of Trade')
     price = models.FloatField(blank=False, help_text='Price at which Trade was Made')
