@@ -3,6 +3,6 @@ from . import views
 
 
 urlpatterns = [
-    url("stock-pca/", views.upload_pca_file_view, name='pca_file_upload'),
-    url("how-to-pca/", views.how_to_pca_view, name='how_to_pca'),
+    url("group-stock-correlation/", views.upload_corr_file_view, name='corr_file_upload'),
+    url("how-to-stock-correlation/", views.how_to_corr_view, name='how_to_corr'),
 ]

@@ -1,29 +1,28 @@
 from django.shortcuts import render
 
-from .forms import PCAFileForm
-from .file_processing import process_pca_file
+from .forms import CorrFileForm
+from .file_processing import process_corr_file
 
 
-def upload_pca_file_view(request):
+def upload_corr_file_view(request):
     if request.method == 'POST':
-        form = PCAFileForm(request.POST, request.FILES)
+        form = CorrFileForm(request.POST, request.FILES)
         if form.is_valid():
-            file = request.FILES['pca_file']
-            variance = form.cleaned_data.get('no_of_components')
+            file = request.FILES['corr_file']
             if str(file).endswith('.csv'):
-                corr = process_pca_file(file, variance)
-                return render(request, 'pca_analysis.html', {'corr': corr})
+                stocks, corr = process_corr_file(file)
+                return render(request, 'corr_analysis.html', {'stocks': stocks, 'corr': corr})
             else:
                 ind = 'File type is incorrect, must be .CSV'
-                return render(request, 'upload_pca_file.html', {'form': form, 'upload_ind': ind})
+                return render(request, 'upload_corr_file.html', {'form': form, 'upload_ind': ind})
         else:
             pass
     else:
-        form = PCAFileForm()
-    return render(request, 'upload_pca_file.html', {'form': form})
+        form = CorrFileForm()
+    return render(request, 'upload_corr_file.html', {'form': form})
 
 
-def how_to_pca_view(request):
+def how_to_corr_view(request):
     data = {
         'prices': [['2020-01-31', 100, 150, 60, 170, 301, 122, 24, 83],
                    ['2020-02-01', 110, 163, 67, 171, 250, 123, 25, 74],
@@ -33,4 +32,4 @@ def how_to_pca_view(request):
                    ['2020-02-05', 113, 148, 67, 176, 252, 129, 25, 70],
                    ['2020-02-06', 111, 152, 69, 178, 249, 135, 25, 75]]
     }
-    return render(request, 'how_to_upload_pca_file.html', data)
+    return render(request, 'how_to_upload_corr_file.html', data)

@@ -22,7 +22,9 @@
                 <br>
                 <br>
                 <div class="a">kauta</div>
-                <h3 class="text-left">Invest in the next <strong>Amazon</strong></h3>
+                <h4 class="text-left">Next Generation Investing Tools</h4>
+                <br>
+                <br>
             </div>
             <br>
             <div class="col-md-5 offset-md-1">
@@ -33,25 +35,25 @@
                     </center>
                     <br>
                     <center>
-                      {% for message in messages %}
-                          <div class="alert alert-success">
-                              <a class="close" href="#" data-dismiss="alert">×</a>
-                              {{ message }}
-                          </div>
-                      {% endfor %}
-                      <form method="post">
+                        {% for message in messages %}
+                        <div class="alert alert-success">
+                            <a class="close" href="#" data-dismiss="alert">×</a>
+                            {{ message }}
+                        </div>
+                        {% endfor %}
+                        <form method="post">
                         {% csrf_token %}
 
                         {% for field in form %}
-                            <p>
-                              {{ field }}
-                            </p>
+                            <p>{{ field }}</p>
                         {% endfor %}
-                        <br>
-                        <button type="submit" class="btn button1">Sign Up</button>
-                        <br>
-                        <br>
-                      </form>
+                            <small>{{ perm.permission }} I accept the Kauta <a href="{% url 'terms' %}" style="color: blue">T&Cs</a> and <a href="{% url 'privacy' %}" style="color: blue">Privacy Policy</a></small>
+                            <br>
+                            <br>
+                            <button type="submit" class="btn button1">Sign Up</button>
+                            <br>
+                            <br>
+                        </form>
                     </center>
                 </div>
             </div>

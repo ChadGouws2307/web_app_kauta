@@ -43,7 +43,7 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-9">
+        <div class="col-md-10">
             <div class="container shadow bg-light">
                 <div class="container">
                     <div class="row no-gutters">
@@ -51,11 +51,12 @@
                             <div class="container">
                                 <br>
                                 <br>
+                                <br>
                                 <center>
                                     <h2>Join our Investment Community</h2>
                                     <br>
-                                    <h5>Kauta will keep you up to date with product offers and new tools you can use.
-                                    </h5>
+                                    <br>
+                                    <h5>Receive our newsletter and other direct communications.</h5>
                                 </center>
                                 <br>
                                 <br>
@@ -68,18 +69,19 @@
                                 <br>
                                 <center>
                                     <h6><strong>{{ ind }}</strong></h6>
-                                    <form>
+                                    <form method="post">
                                         {% csrf_token %}
-                                        {% for field in form %}
-                                            <p>{{ field }}</p>
-                                        {% endfor %}
+                                        <p>{{ form.email }}</p>
+                                        <small>{{ form.permission }} I accept the Kauta <a href="{% url 'terms' %}" style="color: blue">T&Cs</a> and <a href="{% url 'privacy' %}" style="color: blue">Privacy Policy</a></small>
+                                        <br>
                                         <br>
                                         <button type="submit" class="btn button3">Join our Mailing List</button>
-                                        <br>
                                     </form>
                                 </center>
-                            <br>
-                        </div>
+                                <br>
+                                <br>
+                                <br>
+                            </div>
                         </div>
                     </div>
                 </div>

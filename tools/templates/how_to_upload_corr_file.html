@@ -4,7 +4,7 @@
 {% block page_content %}
 
 <head>
-    <title>kauta - How to use PCA</title>
+    <title>kauta - How to use Correlation for Grouping Stocks</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/tools.css' %}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -13,22 +13,21 @@
 <br>
 <br>
 <center>
-    <h1><strong>How to Use PCA for Stock Correlation</strong></h1>
+    <h1><strong>How to Use Correlation for Grouping Stocks</strong></h1>
 </center>
 <br>
 <br>
 
-{% if user.is_authenticated %}
 <div class="container">
     <div class="row no-gutters justify-content-center">
         <div class="col-md-9">
             <div class="container shadow bg-light">
                 <br>
-                <center><h4>What is Principal Component Analysis (PCA)?</h4></center>
+                <center><h4>What is Stock Correlation?</h4></center>
                 <br>
-                <p>Principal Component Analysis is an analysis tool used to reduce the dimensionality of large
-                    data sets, by transforming a large data set (with many variables) into a smaller
-                    one that contains as much information (in the form of variance) about the dataset as possible.
+                <p>Stock correlation is a statistic that measures the degree to which two stocks move in relation to
+                    each other. The correlation coefficient can be a value between +1 (perfect positive correlation)
+                    and -1 (perfect negative correlation).
                 </p>
                 <br>
 
@@ -39,12 +38,12 @@
                     correlation - if your portfolio is very correlated, it is likely taking on more risk than you
                     think.
                 </p>
-                <p>In this case, PCA is used to calculate the
-                    correlation between a set of stocks and build 'Principal Components' that can be used as a
-                    proxy for a group of stocks that are highly correlated.
+                <p>In this case, correlation is used to measure which stocks are likely to move up and together and
+                    can therefore be treated as similar assets in a portfolio. Correlation is a measure of risk
+                    since it determines the likelihood of your stocks increasing or decreasing together.
                 </p>
                 <p>Therefore, if you reduce the correlation in your portfolio, you reduce the downside of your
-                    portfolio because the stocks in your portfolio are less likely to move up or down together
+                    portfolio because the stocks you own are less likely to move up or down together
                     in a given time period.
                 </p>
                 <p>For example, most technology stocks (Apple, Amazon, Microsoft,
@@ -70,7 +69,7 @@
                 <center>
                     <h3>An Example</h3>
                 </center>
-                <p>Below is a table of 8 stocks with their respective daily closing prices. Our goal is to build 3 groups
+                <p>Below is a table of 8 stocks with their respective daily closing prices. Our goal is to build groups
                     of stocks that are similar to each other, where each group is a set of highly correlated stocks
                     (ie they tend to move up together and down together).
                 </p>
@@ -105,9 +104,9 @@
     <div class="row no-gutters justify-content-center">
         <div class="col-md-9">
             <div class="container">
-                <p>So, we upload our file (example below) and set the number of desired components to 3. The PCA then calculates
-                    3 Principal Components (which to us are three groups of correlated stocks), outputs the components and tells
-                    us which stocks fit best in which group.
+                <p>So, we upload our file (example below) and click 'Group Correlated Stocks'. The tool then calculates
+                    each stock pair's correlation and orders them based on their correlation, creating groups of highly
+                    correlated stocks that are not highly correlated with other groups.
                 </p>
             </div>
         </div>
@@ -117,31 +116,94 @@
     <center><h5>We get an output like this:</h5></center>
     <table>
         <tr>
-            <td><strong>Component 1</strong></td>
-            <td>aapl</td>
-            <td>amzn</td>
-            <td>fb</td>
-            <td>nee</td>
-            <td>cat</td>
-            <td>peg</td>
+            <th>aapl</th>
+            <th>amzn</th>
+            <th>fb</th>
+            <th>nee</th>
+            <th>cat</th>
+            <th>peg</th>
+            <th>air</th>
+            <th>baa</th>
         </tr>
         <tr>
-            <td><strong>Component 2</strong></td>
-            <td>baa</td>
-            <td>air</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td class="cell-yellow">1.0</td>
+            <td class="cell-yellow">0.93</td>
+            <td class="cell-yellow">0.97</td>
+            <td class="cell-green">0.4</td>
+            <td class="cell-blue-green">0.31</td>
+            <td class="cell-blue-green">0.27</td>
+            <td class="cell-blue">-0.34</td>
+            <td class="cell-blue">-0.23</td>
         </tr>
         <tr>
-            <td><strong>Component 3</strong></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td class="cell-yellow">0.93</td>
+            <td class="cell-yellow">1.0</td>
+            <td class="cell-yellow">0.97</td>
+            <td class="cell-blue-green">0.35</td>
+            <td class="cell-blue-green">0.22</td>
+            <td class="cell-blue-green">0.31</td>
+            <td class="cell-blue">-0.41</td>
+            <td class="cell-blue-blue-green">-0.15</td>
+        </tr>
+        <tr>
+            <td class="cell-yellow">0.97</td>
+            <td class="cell-yellow">0.97</td>
+            <td class="cell-yellow">1.0</td>
+            <td class="cell-green">0.48</td>
+            <td class="cell-blue-green">0.37</td>
+            <td class="cell-blue-blue-green">0.11</td>
+            <td class="cell-blue-blue-green">-0.05</td>
+            <td class="cell-blue-blue-green">-0.09</td>
+        </tr>
+        <tr>
+            <td class="cell-green">0.4</td>
+            <td class="cell-blue-green">0.35</td>
+            <td class="cell-green">0.48</td>
+            <td class="cell-yellow">1.0</td>
+            <td class="cell-yellow">0.94</td>
+            <td class="cell-green-yellow-yellow">0.87</td>
+            <td class="cell-blue-green">0.33</td>
+            <td class="cell-blue-green">0.37</td>
+        </tr>
+        <tr>
+            <td class="cell-blue-green">0.31</td>
+            <td class="cell-blue-green">0.22</td>
+            <td class="cell-blue-green">0.37</td>
+            <td class="cell-yellow">0.94</td>
+            <td class="cell-yellow">1.0</td>
+            <td class="cell-green-yellow-yellow">0.84</td>
+            <td class="cell-blue-green">0.24</td>
+            <td class="cell-blue-green">0.35</td>
+        </tr>
+        <tr>
+            <td class="cell-blue-green">0.27</td>
+            <td class="cell-blue-green">0.31</td>
+            <td class="cell-blue-blue-green">0.11</td>
+            <td class="cell-green-yellow-yellow">0.87</td>
+            <td class="cell-green-yellow-yellow">0.84</td>
+            <td class="cell-yellow">1.0</td>
+            <td class="cell-blue-blue-green">0.19</td>
+            <td class="cell-blue-green">0.21</td>
+        </tr>
+        <tr>
+            <td class="cell-blue">-0.34</td>
+            <td class="cell-blue">-0.41</td>
+            <td class="cell-blue-blue-green">-0.05</td>
+            <td class="cell-blue-green">0.33</td>
+            <td class="cell-blue-green">0.24</td>
+            <td class="cell-blue-blue-green">0.19</td>
+            <td class="cell-yellow">1.0</td>
+            <td class="cell-yellow">0.94</td>
+        </tr>
+        <tr>
+            <td class="cell-blue">-0.23</td>
+            <td class="cell-blue-blue-green">-0.15</td>
+            <td class="cell-blue-blue-green">-0.09</td>
+            <td class="cell-blue-green">0.37</td>
+            <td class="cell-blue-green">0.35</td>
+            <td class="cell-blue-green">0.21</td>
+            <td class="cell-yellow">0.94</td>
+            <td class="cell-yellow">1.0</td>
         </tr>
     </table>
     <br>
@@ -150,16 +212,17 @@
     <div class="row no-gutters justify-content-center">
         <div class="col-md-9">
             <div class="container">
-                <p>You will notice that Component 1 has six stocks, Component 2 has two and Component 3 has none. It is normal
-                    for different groups to have different numbers of stocks or even no stocks, depending on how well a stock is
-                    correlated with any particular group. In this example, the stocks correlate well with Components 1 and 2,
-                    but not with Component 3 (so Component 3 is actually unnecessary).
+                <p>You will notice that the table forms unique groupings in a diagonal pattern, where higher correlations
+                    tend towards yellow and negative correlation tends towards blue where high correlations
+                    cluster around a diagonal set of 1s. Each group should form a N x N matrix, indicating which
+                    stocks can be grouped together as well as a less correlated area, separating each group from the
+                    next.
                 </p>
                 <p>You will often find that stocks in similar sectors or industries are grouped together - in this example,
                     Apple (AAPL), Amazon (AMZN) and Facebook (FB) are all technology stocks and therefore highly correlated.
                     Whereas Boeing (BAA) and Airbus (AIR) are both in the Aerospace and Defense industry, and are highly
-                    correlated with each other, but not with the technology stocks. Therefore, Component 1 can actually be
-                    labeled 'Technology' and Component 2 can be labeled 'Aerospace & Defense'.
+                    correlated with each other, but not with the technology stocks. Therefore, Group 1 can actually be
+                    labeled 'Technology' and Group 2 can be labeled 'Aerospace & Defense'.
                 </p>
             </div>
         </div>
@@ -218,7 +281,7 @@
 </div>
 <br>
 <br>
-<center><a href="{% url 'pca_file_upload' %}" class="btn button2">Return to PCA</a></center>
+<center><a href="{% url 'corr_file_upload' %}" class="btn button2">Return to Correlation</a></center>
 <br>
 <br>
 
@@ -262,14 +325,14 @@
         <div class="col-md-9">
             <div class="container">
                 <ul class="list">
-                    <li>The length of the period for which you want to perform PCA does not matter. It can be the daily, weekly,
-                        monthly or even yearly closing prices for each stock. </li>
+                    <li>The length of the period for which you want to perform correlation grouping does not matter. It
+                        can be the daily, weekly, monthly or even yearly closing prices for each stock. </li>
                     <li>Make sure the time period and time frame for each stock is the same.</li>
                     <li>The dates for each stock's prices must align. The model will not output the correct correlations if
                         Apple stock's February data is in the March row. Apple's March data must go with Amazon's March data and
                         both of theirs must go with Walmart's March data etc.</li>
                     <li>Ensure that you have a good amount of data. 3 monthly periods is too little to calculate an effective
-                        correlation. A good rule of thumb is to use a minimum of 20 - 25 periods.</li>
+                        correlation. A good rule of thumb is to use a minimum of 25 periods.</li>
                     <li>It is important to note that some stocks may remain highly correlated over a long time frame,
                         but this correlation may recede over time depending on various market factors and individual
                         company performance.</li>
@@ -280,18 +343,7 @@
 </div>
 <br>
 <br>
-{% else %}
-<br>
-<br>
-<center><h1>Sign up to use this Stock Tool for free!</h1></center>
-<br>
-<center><h3>There is no limit on how much you can use it, or how you can use it.</h3></center>
-<br>
-<a href="{% url 'signup' %}" class="btn signup">Sign Up</a>
-<br>
-<br>
-<br>
-{% endif %}
+
 
 </body>
 

@@ -1,9 +1,9 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
-from django.forms.widgets import PasswordInput, TextInput
+from django.forms.widgets import PasswordInput, TextInput, CheckboxInput
 
-from .models import Email
+from .models import Email, UserPermission
 
 
 class SignUpForm(UserCreationForm):
@@ -23,8 +23,19 @@ class LoginForm(AuthenticationForm):
 
 
 class EmailForm(forms.ModelForm):
-    email = forms.EmailField(widget=TextInput(attrs={'class': 'validate', 'placeholder': 'Email address'}))
+    email = forms.EmailField(widget=TextInput(attrs={'class': 'validate',
+                                                     'placeholder': 'Email address',
+                                                     'style': 'width:270px'}))
+    permission = forms.BooleanField(label='I have read and accept the Kauta T&Cs and Privacy Policy')
 
     class Meta:
         model = Email
-        fields = ['email']
+        fields = ['email', 'permission']
+
+
+class UserPermissionForm(forms.ModelForm):
+    permission = forms.BooleanField()
+
+    class Meta:
+        model = UserPermission
+        fields = ['permission']

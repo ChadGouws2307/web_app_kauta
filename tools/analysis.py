@@ -1,36 +1,44 @@
 import pandas as pd
-from sklearn.decomposition import PCA
-from sklearn.preprocessing import StandardScaler
+import numpy as np
 
 
-def transform_data(df):
-    tickers = list(df)
-    x_tran = StandardScaler().fit_transform(df.values)
-    return tickers, x_tran
+def prepare_price_data(df):
+    df = np.log(df) - np.log(df.shift(1))
+    df = df.drop(0)
+    return df
 
 
-def pca_decomposition(x, n):
-    components = []
-    for i in range(n):
-        components.append('component ' + str(i+1))
-    pca = PCA(n_components=n)
-    principal_components = pca.fit_transform(x)
-    principal_df = pd.DataFrame(data=principal_components, columns=components)
-    return principal_df
+def group_corr(df):
+    stocks = list(df.columns)
+    d_array = _generate_distance_matrix(len(stocks))
+    count = 0
+    e_tot = -1
+    while count < len(stocks):
+        df_corr = df[stocks].corr()                                     # Calculate corr of new order
+        e = _calculate_energy(df_corr, d_array)                         # Calculate energy of new order = (1 - Cij)*(Di - Dj)
+        df_energy = pd.DataFrame(e, columns=df_corr.columns)
+        e_new = e.sum()                                                 # Calculate tot energy of new order
+        stocks = list(df_energy.sum(axis=0).sort_values().index)        # Sort columns by total column energy
+        if e_new == e_tot:
+            break
+        else:
+            e_tot = e_new
+            count += 1
+    corr = np.round(df_corr.values, 2).tolist()
+
+    return df_corr.columns.tolist(), np.round(df_corr.values, 2).tolist()
 
 
-def concatenate_data(pc_df, x_tran, tickers):
-    df_tran = pd.DataFrame(data=x_tran, columns=tickers)
-    df_all = pd.concat([pc_df, df_tran], axis=1)
-    return df_all
+def _calculate_energy(corr, d):
+    e_array = np.multiply(1 - corr.values, d)
+    return e_array
 
 
-def calculate_corr(all_df, n):
-    df_corr = all_df.corr().iloc[0:n, n:]
-    df_groups = df_corr.where(df_corr != df_corr.max(),
-                              df_corr.columns.to_series(), axis=1).where(df_corr == df_corr.max(), '', axis=1)
-    corr_groups = []
-    for comp, stocks in df_groups.iterrows():
-        group = [comp] + list(stocks)
-        corr_groups.append([g for g in group if g])
-    return corr_groups
+def _generate_distance_matrix(size):
+    n = np.array(range(size))+1
+    s = n
+    for m in n:
+        s = np.vstack([s, n-m])
+    s = s[1:]
+    s[s <= 0] = 0
+    return np.sqrt(s)

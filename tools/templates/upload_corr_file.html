@@ -4,7 +4,7 @@
 {% block page_content %}
 
 <head>
-    <title>kauta - Principal Component Analysis</title>
+    <title>kauta - Grouping Correlated Stocks</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/tools.css' %}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -13,7 +13,7 @@
 <br>
 <br>
 <center>
-    <h1><strong>Group Correlated Stocks</strong></h1>
+    <h1><strong>Group Stocks based on their Correlation</strong></h1>
     <br>
     {% if user.is_authenticated %}
     <br>
@@ -31,7 +31,7 @@
                         {% endfor %}
                         <br>
                         <br>
-                        <button type="submit" class="btn button3">Perform Correlation</button>
+                        <button type="submit" class="btn button3">Group Correlated Stocks</button>
                         <br>
                     </form>
                     <br>
@@ -58,7 +58,7 @@
                         </div>
                     </div>
                     <br>
-                    <center><a href="{% url 'how_to_corr' %}" style="color:blue">How to use Correlation</a></center>
+                    <center><a href="{% url 'how_to_corr' %}" style="color:blue">How to use Correlation Grouping</a></center>
                     <br>
                 </div>
             </div>
@@ -71,7 +71,7 @@
     <br>
     <center><h2>Sign up to use this tool for free!</h2></center>
     <br>
-    <center><h3>We don't limit the use of our free tools.</h3></center>
+    <center><a href="{% url 'how_to_corr' %}" style="color:blue">How to use Correlation Grouping</a></center>
     <br>
     <a href="{% url 'signup' %}" class="btn signup">Sign Up</a>
     <br>

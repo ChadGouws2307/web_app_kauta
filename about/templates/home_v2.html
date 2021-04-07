@@ -20,11 +20,12 @@
             <div class="container">
                 <br>
                 <center>
-                    <h2>Success for Every Investor</h2>
+                    <h2>Next Generation Investing Tools</h2>
                 </center>
                 <br>
-                <h5>Kauta is an easy-to-use investing platform that provides stock market information and investment analysis.</h5>
-                <h5>We use open source technology to help you make great investments and build financial freedom.</h5>
+                <h5>Kauta is an easy-to-use investing platform that provides tools for investment analysis and
+                    risk management.</h5>
+                <h5>We use the latest technology to help you make great investments and build financial freedom.</h5>
                 <br>
                 <center>
                     <a href="{% url 'signup' %}" class="btn button1">Get Early Access</a>
@@ -43,7 +44,7 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-9">
+        <div class="col-md-10">
             <div class="container shadow bg-light">
                 <div class="container">
                     <div class="row no-gutters">
@@ -51,11 +52,12 @@
                             <div class="container">
                                 <br>
                                 <br>
+                                <br>
                                 <center>
                                     <h2>Join our Investment Community</h2>
                                     <br>
-                                    <h5>Kauta will keep you up to date with product offers and new tools you can use.
-                                    </h5>
+                                    <br>
+                                    <h5>Receive our newsletter, product updates and special offers.</h5>
                                 </center>
                                 <br>
                                 <br>
@@ -73,13 +75,15 @@
                                         {% for field in form %}
                                             <p>{{ field }}</p>
                                         {% endfor %}
+                                        <small>I accept the Kauta <a href="{% url 'terms' %}" style="color: blue">T&Cs</a> and <a href="{% url 'privacy' %}" style="color: blue">Privacy Policy</a> <a></a></small>
+                                        <br>
                                         <br>
                                         <button type="submit" class="btn button3">Join our Mailing List</button>
-                                        <br>
                                     </form>
                                 </center>
-                            <br>
-                        </div>
+                                <br>
+                                <br>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -77,3 +77,17 @@ p {
     font-size: 120%;
 }
 
+.footer {
+    color: black;
+    line-height: 100%;
+    font-size: 100%;
+    font-style: normal;
+}
+
+.footer em {
+    color: black;
+    line-height: 100%;
+    font-size: 100%;
+    font-style: normal;
+}
+

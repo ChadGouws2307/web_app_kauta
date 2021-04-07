@@ -32,11 +32,11 @@
                 <a class="nav-link" href="{% url 'pricing_index' %}"><h6>products</h6></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="{% url 'pca_file_upload' %}"><h6>tools</h6></a>
+                <a class="nav-link" href="{% url 'corr_file_upload' %}"><h6>tools</h6></a>
             </li>
-            <li class="nav-item active">
+            <!--<li class="nav-item active">
                 <a class="nav-link" href="{% url 'stock_list' %}"><h6>stocks</h6></a>
-            </li>
+            </li>-->
             <!--<li class="nav-item active"><a class="nav-link" href="{% url 'project_index' %}"><h6>case studies</h6></a></li>-->
             <li class="nav-item active">
                 <a class="nav-link" href="{% url 'blog_index' %}"><h6>blog</h6></a>
@@ -54,11 +54,11 @@
                 <a class="nav-link" href="{% url 'pricing_index' %}"><h6>products</h6></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="{% url 'pca_file_upload' %}"><h6>tools</h6></a>
+                <a class="nav-link" href="{% url 'corr_file_upload' %}"><h6>tools</h6></a>
             </li>
-            <li class="nav-item active">
+            <!--<li class="nav-item active">
                 <a class="nav-link" href="{% url 'stock_list' %}"><h6>stocks</h6></a>
-            </li>
+            </li>-->
             <!--<li class="nav-item active"><a class="nav-link" href="{% url 'project_index' %}"><h6>case studies</h6></a></li>-->
             <li class="nav-item active">
                 <a class="nav-link" href="{% url 'blog_index' %}"><h6>blog</h6></a>
@@ -94,21 +94,21 @@
             </div>
             <div class="col-md-3">
                 <h6><strong>Kauta</strong></h6>
-                <p><a href="{% url 'home' %}">home</a></p>
-                <p><a href="{% url 'about' %}">about</a></p>
-                <p><a href="{% url 'stock_list' %}">stocks</a></p>
-                <p><a href="{% url 'blog_index' %}">blog</a></p>
+                <p class="footer"><em><a href="{% url 'home' %}">home</a></em></p>
+                <p class="footer"><em><a href="{% url 'about' %}">about</a></em></p>
+                <p class="footer"><em><a href="{% url 'stock_list' %}">stocks</a></em></p>
+                <p class="footer"><em><a href="{% url 'blog_index' %}">blog</a></em></p>
             </div>
             <div class="col-md-3">
                 <h6><strong>Join Us</strong></h6>
-                <p><a href="{% url 'pricing_index' %}">products</a></p>
-                <p><a href="{% url 'signup' %}">sign up</a></p>
-                <p><a href="{% url 'login' %}">login</a></p>
+                <p class="footer"><em><a href="{% url 'pricing_index' %}">products</a></em></p>
+                <p class="footer"><em><a href="{% url 'signup' %}">sign up</a></em></p>
+                <p class="footer"><em><a href="{% url 'login' %}">login</a></em></p>
             </div>
             <div class="col-md-3">
                 <h6><strong>Legal</strong></h6>
-                <p><a href="{% url 'privacy' %}">privacy policy</a></p>
-                <p><a href="{% url 'terms' %}">terms & conditions</a></p>
+                <p class="footer"><em><a href="{% url 'privacy' %}">privacy policy</a></em></p>
+                <p class="footer"><em><a href="{% url 'terms' %}">terms & conditions</a></em></p>
             </div>
         </div>
         <div class="container">

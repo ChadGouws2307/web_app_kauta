@@ -1,0 +1,83 @@
+<!doctype html>
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+
+<head>
+    <title>kauta - Stocks Grouped by Correlation</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/tools.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+<br>
+<br>
+<div class="container">
+    <center><h1><strong>Stocks Grouped by Correlation</strong></h1></center>
+    <br>
+    {% if user.is_authenticated%}
+    <br>
+    <table>
+        <tr>
+        {% for stock in stocks %}
+            <th>{{ stock }}</th>
+        {% endfor %}
+        </tr>
+
+        {% for group in corr %}
+        <tr>
+            {% for item in group %}
+                {% if item < -0.6 %}
+                <td class="cell-navy">{{ item }}</td>
+
+                {% elif item >= -0.6 and item < -0.2 %}
+                <td class="cell-blue">{{ item }}</td>
+
+                {% elif item >= -0.2 and item < 0.0 %}
+                <td class="cell-blue-blue-green">{{ item }}</td>
+
+                {% elif item >= 0.0 and item < 0.2 %}
+                <td class="cell-blue-green-green">{{ item }}</td>
+
+                {% elif item >= 0.2 and item < 0.4 %}
+                <td class="cell-blue-green">{{ item }}</td>
+
+                {% elif item >= 0.4 and item < 0.6 %}
+                <td class="cell-green">{{ item }}</td>
+
+                {% elif item >= 0.6 and item < 0.7 %}
+                <td class="cell-green-green-yellow">{{ item }}</td>
+
+                {% elif item >= 0.7 and item < 0.8 %}
+                <td class="cell-green-yellow">{{ item }}</td>
+
+                {% elif item >= 0.8 and item < 0.9 %}
+                <td class="cell-green-yellow-yellow">{{ item }}</td>
+
+                {% else %}
+                <td class="cell-yellow">{{ item }}</td>
+
+                {% endif %}
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <br>
+    {% else %}
+    <br>
+    <br>
+    <center><h2>Sign Up to use this Tool for Free!</h2></center>
+    <br>
+    <center><h4>We don't limit the use of our free tools.</h4></center>
+    <br>
+    <a href="{% url 'signup' %}" class="btn signup">Sign Up</a>
+    <br>
+    <br>
+    <br>
+    {% endif %}
+</div>
+
+</body>
+
+{% endblock %}

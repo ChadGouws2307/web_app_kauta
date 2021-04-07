@@ -31,7 +31,7 @@
                     {% for field in form %}
                         <p>{{ field }}</p>
                     {% endfor %}
-                    <small>Password: Minimum 8 characters, containing letters and numbers</small>
+                    <small>{{ perm.permission }} I accept the Kauta <a href="{% url 'terms' %}" style="color: blue">T&Cs</a> and <a href="{% url 'privacy' %}" style="color: blue">Privacy Policy</a></small>
                     <br>
                     <br>
                     <button type="submit" class="btn button1">Sign Up</button>

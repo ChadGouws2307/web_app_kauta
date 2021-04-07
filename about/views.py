@@ -6,6 +6,7 @@ from user_analytics import analytics as ana
 
 
 def home_view(request):
+    template = ana.choose_template_option('home.html', 'home_v2.html')
     if request.method == 'GET':
         form = EmailForm()
         ind = ''
@@ -17,12 +18,12 @@ def home_view(request):
             ind = 'Thank you!'
         else:
             ind = ''
+
+        return render(request, template, {'form': form, 'ind': ind})
     context = {
         'form': form,
         'ind': ind,
     }
-
-    template = ana.choose_template_option('home.html', 'home_v2.html')
     return render(request, template, context)
 
 
