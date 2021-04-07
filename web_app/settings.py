@@ -27,21 +27,36 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True                                        # Set to False in production
+DEBUG = False                                        # Set to False in production
 
-CSRF_COOKIE_SECURE = False                           # True in production - avoid transmitting the CSRF cookie over HTTP
-SESSION_COOKIE_SECURE = False                        # True in production - avoid transmitting the session cookie over HTTP
+if DEBUG:                                                       # Dev Environment
+    CSRF_COOKIE_SECURE = False  # True in production - avoid transmitting the CSRF cookie over HTTP
+    SESSION_COOKIE_SECURE = False  # True in production - avoid transmitting the session cookie over HTTP
 
-SECURE_BROWSER_XSS_FILTER = True
-SECURE_CONTENT_TYPE_NOSNIFF = True
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
 
-SECURE_SSL_REDIRECT = False                         # Set to True in production
+    SECURE_SSL_REDIRECT = False  # Set to True in production
 
-SECURE_HSTS_SECONDS = 86400                         # 1 day
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_PRELOAD = True
+    SECURE_HSTS_SECONDS = 86400  # 1 day
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
 
-ALLOWED_HOSTS = []                                  # 'kauta.io', 'www.kauta.io'
+    ALLOWED_HOSTS = []  # 'kauta.io', 'www.kauta.io'
+else:
+    CSRF_COOKIE_SECURE = True  # True in production - avoid transmitting the CSRF cookie over HTTP
+    SESSION_COOKIE_SECURE = True  # True in production - avoid transmitting the session cookie over HTTP
+
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+
+    SECURE_SSL_REDIRECT = True  # Set to True in production
+
+    SECURE_HSTS_SECONDS = 86400  # 1 day
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+
+    ALLOWED_HOSTS = ['kauta.io', 'www.kauta.io']                  # 'kauta.io', 'www.kauta.io'
 
 
 # Application definition
