@@ -70,12 +70,10 @@
                                 <br>
                                 <center>
                                     <h6><strong>{{ ind }}</strong></h6>
-                                    <form>
+                                    <form method="post">
                                         {% csrf_token %}
-                                        {% for field in form %}
-                                            <p>{{ field }}</p>
-                                        {% endfor %}
-                                        <small>I accept the Kauta <a href="{% url 'terms' %}" style="color: blue">T&Cs</a> and <a href="{% url 'privacy' %}" style="color: blue">Privacy Policy</a> <a></a></small>
+                                        <p>{{ form.email }}</p>
+                                        <small>{{ form.permission }} I accept the Kauta <a href="{% url 'terms' %}" style="color: blue">T&Cs</a> and <a href="{% url 'privacy' %}" style="color: blue">Privacy Policy</a></small>
                                         <br>
                                         <br>
                                         <button type="submit" class="btn button3">Join our Mailing List</button>

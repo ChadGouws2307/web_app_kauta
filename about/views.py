@@ -10,6 +10,11 @@ def home_view(request):
     if request.method == 'GET':
         form = EmailForm()
         ind = ''
+        context = {
+            'form': form,
+            'ind': ind,
+        }
+        return render(request, template, context)
     else:
         form = EmailForm(request.POST)
         if form.is_valid():
@@ -18,13 +23,7 @@ def home_view(request):
             ind = 'Thank you!'
         else:
             ind = ''
-
         return render(request, template, {'form': form, 'ind': ind})
-    context = {
-        'form': form,
-        'ind': ind,
-    }
-    return render(request, template, context)
 
 
 def about_view(request):

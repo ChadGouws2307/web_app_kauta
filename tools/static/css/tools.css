@@ -73,8 +73,12 @@ td, th {
     background-color: #0082DE;
 }
 
+.cell-blue-green-g {
+    background-color: #0095C3;
+}
+
 .cell-blue-green {
-    background-color: #0096ff;
+    background-color: #00B1C1;
 }
 
 .cell-green {
@@ -86,11 +90,11 @@ td, th {
 }
 
 .cell-green-yellow {
-    background-color: #aaff00;
+    background-color: #beff00;
 }
 
 .cell-green-yellow-yellow {
-    background-color: #d2ff00;
+    background-color: #dcff00;
 }
 
 .cell-yellow {
