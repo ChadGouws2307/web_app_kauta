@@ -29,7 +29,6 @@ def group_corr(df):
         else:
             e_tot = e_new
             count += 1
-    corr = np.round(df_corr.values, 2).tolist()
 
     return df_corr.columns.tolist(), np.round(df_corr.values, 2).tolist()
 
