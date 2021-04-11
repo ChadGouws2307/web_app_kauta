@@ -27,31 +27,34 @@
         {% for group in corr %}
         <tr>
             {% for item in group %}
-                {% if item < -0.6 %}
+                {% if item < -0.5 %}
                 <td class="cell-navy">{{ item }}</td>
 
-                {% elif item >= -0.6 and item < -0.2 %}
+                {% elif item >= -0.5 and item < -0.2 %}
                 <td class="cell-blue">{{ item }}</td>
 
-                {% elif item >= -0.2 and item < 0.0 %}
+                {% elif item >= -0.2 and item < -0.1 %}
                 <td class="cell-blue-blue-green">{{ item }}</td>
 
-                {% elif item >= 0.0 and item < 0.2 %}
+                {% elif item >= -0.1 and item < 0.1 %}
                 <td class="cell-blue-green-green">{{ item }}</td>
 
-                {% elif item >= 0.2 and item < 0.4 %}
+                {% elif item >= 0.1 and item < 0.3 %}
+                <td class="cell-blue-green-g">{{ item }}</td>
+
+                {% elif item >= 0.3 and item < 0.4 %}
                 <td class="cell-blue-green">{{ item }}</td>
 
-                {% elif item >= 0.4 and item < 0.6 %}
+                {% elif item >= 0.4 and item < 0.5 %}
                 <td class="cell-green">{{ item }}</td>
 
-                {% elif item >= 0.6 and item < 0.7 %}
+                {% elif item >= 0.5 and item < 0.6 %}
                 <td class="cell-green-green-yellow">{{ item }}</td>
 
-                {% elif item >= 0.7 and item < 0.8 %}
+                {% elif item >= 0.6 and item < 0.7 %}
                 <td class="cell-green-yellow">{{ item }}</td>
 
-                {% elif item >= 0.8 and item < 0.9 %}
+                {% elif item >= 0.7 and item < 0.8 %}
                 <td class="cell-green-yellow-yellow">{{ item }}</td>
 
                 {% else %}

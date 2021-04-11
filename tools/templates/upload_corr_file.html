@@ -22,6 +22,8 @@
             <div class="col-md-7">
                 <div class="container">
                     <br>
+                    <br>
+                    <br>
                     <h6><strong>{{ upload_ind }}</strong></h6>
                     <br>
                     <form method="post" enctype="multipart/form-data">
@@ -47,18 +49,20 @@
                     <br>
                     <div class="container">
                         <div class="row justify-content-center">
-                            <div class="col-md-8">
+                            <div class="col-md-9">
                                 <div class="container">
-                                    <p class="description">aapl,amzn,fb,nee,baa,cat,peg,air</p>
-                                    <p class="description">100,150,60,170,301,122,24,83</p>
-                                    <p class="description">110,163,67,171,250,123,25,74</p>
-                                    <p class="description">108,156,65,172,240,122,24,72</p>
+                                    <p class="description">date,aapl,amzn,fb,nee,baa,cat,peg,air</p>
+                                    <p class="description">2020/01/01,100,150,60,170,301,122,24,83</p>
+                                    <p class="description">2020/02/01,110,163,67,171,250,123,25,74</p>
+                                    <p class="description">2020/03/01,108,156,65,172,240,122,24,72</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <br>
                     <center><a href="{% url 'how_to_corr' %}" style="color:blue">How to use Correlation Grouping</a></center>
+                    <br>
+                    <center><a href="{% url 'how_to_save_csv' %}" style="color:blue">How to Save an Excel File as .CSV</a></center>
                     <br>
                 </div>
             </div>

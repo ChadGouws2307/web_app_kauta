@@ -1,0 +1,138 @@
+<!doctype html>
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+
+<head>
+    <title>kauta - How to use Correlation for Grouping Stocks</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/tools.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+<br>
+<br>
+<center>
+    <h1><strong>How to save an Excel file as .CSV</strong></h1>
+</center>
+<br>
+
+<div class="container">
+    <div class="row no-gutters justify-content-center">
+        <div class="col-md-9">
+            <div class="container shadow bg-light">
+                <br>
+                <center><h3>To Save Excel as .CSV</h3></center>
+                <br>
+                <ol>
+                    <li>In your Excel spreadsheet, click <strong>File</strong>.</li>
+                    <li>Click <strong>Save As</strong>.</li>
+                    <li>Click <strong>Browse</strong> to choose where you want to save your file.</li>
+                    <li>Select <strong>"CSV"</strong> from the "Save as type" drop-down menu.</li>
+                    <li>Click <strong>Save</strong>.</li>
+                </ol>
+                <br>
+                <center><h3>Important Points</h3></center>
+                <br>
+                <ul>
+                    <li>The file you submit <strong>must</strong> be a .CSV</li>
+                    <li>Ensure each stock column has a name</li>
+                    <li>The date column must have a name, called <strong>"DATE"</strong></li>
+                    <li>The dates of each stock's price must align with the other stock's price dates</li>
+                    <li>If you get a server error, it is most likely because your file type is incorrect</li>
+                </ul>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+
+<div class="container">
+    <center><h3>File Structure</h3></center>
+    <br>
+    <div class="row no-gutters">
+        <div class="col-md-6">
+            <div class="container shadow bg-light">
+                <br>
+                <center>
+                    <p><strong>.CSV file Structure</strong></p>
+                </center>
+                <br>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-11">
+                            <div class="container">
+                                <p class="description"><em>Header &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em>date,aapl,amzn,fb,nee,baa,cat,peg,air</p>
+                                <p class="description"><em>Period 1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em>2020/01/01,100,150,60,170,301,122,24,83</p>
+                                <p class="description"><em>Period 2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em>2020/01/02,110,163,67,171,250,123,25,74</p>
+                                <p class="description"><em>Period 3 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em>2020/01/03,112,169,66,174,255,115,23,77</p>
+                                <p class="description"><em>. . . &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em>. . .</p>
+                                <p class="description"><em>Period n &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em>2020/03/02,109,145,64,176,245,130,25,73</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="container">
+                <br>
+                <center>
+                    <p><strong>.CSV file Structure Explained</strong></p>
+                </center>
+                <br>
+                <div class="container">
+                    <p class="description"><em>&nbsp;&nbsp;&nbsp;Header &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em>Ticker symbol for each stock you want to correlate</p>
+                    <p class="description"><em>&nbsp;&nbsp;&nbsp;Period 1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em>Each ticker's closing price for the 1st period</p>
+                    <p class="description"><em>&nbsp;&nbsp;&nbsp;Period 2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em>Each ticker's closing price for the 2nd period</p>
+                    <p class="description"><em>&nbsp;&nbsp;&nbsp;Period 3 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em>Each ticker's closing price for the 3rd period</p>
+                    <p class="description"><em>&nbsp;&nbsp;&nbsp;. . . &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em>. . .</p>
+                    <p class="description"><em>&nbsp;&nbsp;&nbsp;Period n &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em>Each ticker's closing price for the nth period</p>
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<center><a href="{% url 'corr_file_upload' %}" class="btn button2">Return to Correlation</a></center>
+<br>
+<br>
+
+<center>
+    <h3><strong>If the .CSV were a Table</strong></h3>
+</center>
+<br>
+
+<div class="container">
+    <table>
+        <tr>
+            <th>date</th>
+            <th>aapl</th>
+            <th>amzn</th>
+            <th>fb</th>
+            <th>nee</th>
+            <th>baa</th>
+            <th>cat</th>
+            <th>peg</th>
+            <th>air</th>
+        </tr>
+        {% for price in prices %}
+        <tr>
+            {% for item in price %}
+            <td>{{ item }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+<br>
+<br>
+
+</body>
+
+{% endblock %}
