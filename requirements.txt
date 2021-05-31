@@ -5,3 +5,6 @@ django-google-analytics-app
 python-dotenv
 pandas
 scikit-learn
+numpy
+pytest-runner
+luno-python

@@ -10,7 +10,7 @@ from algorithm.NN import NeuralNetwork
 
 tl = TradeLuno()
 
-api_file = 'C:/Users/chadg/GARD/Projects/capital_web_app/data/test_luno.csv'
+api_file = 'C:/Users/chadg/GARD/Projects/kauta_web_app/data/test_luno.csv'
 
 
 def main_nn(currency_pairs):
