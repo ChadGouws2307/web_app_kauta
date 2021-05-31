@@ -12,7 +12,7 @@ load_dotenv()
 
 
 def read_nn_from_file(file_path):
-    return np.genfromtxt('home/kautuboy/repositories/kauta_web_app/data/nn_architecture/' + file_path, delimiter=',')
+    return np.genfromtxt('repositories/kauta_web_app/data/nn_architecture/' + file_path, delimiter=',')
 
 
 def append_list_to_df(df, list_of_list):
@@ -75,8 +75,8 @@ class TradeLuno:
                      'XBTZAR': '0',
                      'ETHZAR': '0',
                      }
-        self.price_files = {'XBTZAR': 'home/kautuboy/repositories/kauta_web_app/data/prod_prices/XBTZAR.csv',
-                            'ETHZAR': 'home/kautuboy/repositories/kauta_web_app/data/prod_prices/ETHZAR.csv',
+        self.price_files = {'XBTZAR': 'repositories/kauta_web_app/data/prod_prices/XBTZAR.csv',
+                            'ETHZAR': 'repositories/kauta_web_app/data/prod_prices/ETHZAR.csv',
                             }
         self.trade_perc = 0.35
         self.set_key_id()
@@ -237,7 +237,7 @@ class NeuralNetwork:
         return w
 
 
-api_file = 'home/kautuboy/repositories/kauta_web_app/data/test_luno.csv'
+api_file = 'repositories/kauta_web_app/data/test_luno.csv'
 
 
 def main_nn(currency_pairs):
