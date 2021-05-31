@@ -37,7 +37,7 @@ def write_nn_to_file(nn, algo, gen=0):
 
 
 def read_nn_from_file(file_path):
-    return np.genfromtxt('C:/Users/chadg/GARD/Projects/kauta_web_app/data/nn_architecture/' + file_path, delimiter=',')
+    return np.genfromtxt('home/kautuboy/repositories/kauta_web_app/data/nn_architecture/' + file_path, delimiter=',')
 
 
 def read_df_from_file(csv_file):

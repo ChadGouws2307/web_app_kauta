@@ -30,8 +30,8 @@ class TradeLuno:
                      'XBTZAR': '0',
                      'ETHZAR': '0',
                      }
-        self.price_files = {'XBTZAR': 'C:/Users/chadg/GARD/Projects/kauta_web_app/data/prod_prices/XBTZAR.csv',
-                            'ETHZAR': 'C:/Users/chadg/GARD/Projects/kauta_web_app/data/prod_prices/ETHZAR.csv',
+        self.price_files = {'XBTZAR': 'home/kautuboy/repositories/kauta_web_app/data/prod_prices/XBTZAR.csv',
+                            'ETHZAR': 'home/kautuboy/repositories/kauta_web_app/data/prod_prices/ETHZAR.csv',
                             }
         self.trade_perc = 0.35
         self.set_key_id()
