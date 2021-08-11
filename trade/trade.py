@@ -11,13 +11,16 @@ import numpy as np
 load_dotenv()
 
 
-def read_nn_from_file(file_path):
-    return np.genfromtxt('repositories/kauta_web_app/data/nn_architecture/' + file_path, delimiter=',')
+def read_nn_from_file(file_path, prod=True):
+    if prod:
+        return np.genfromtxt('repositories/kauta_web_app/data/nn_architecture/' + file_path, delimiter=',')
+    else:
+        return np.genfromtxt('C:/Users/chadg/GARD/Projects/kauta_web_app/data/nn_architecture/' + file_path, delimiter=',')
 
 
 def append_list_to_df(df, list_of_list):
     df_2 = pd.DataFrame(list_of_list, columns=list(df))
-    return df_2.append(df, ignore_index=True)
+    return df.append(df_2, ignore_index=True)
 
 
 def append_current_price_to_previous(price, df):
@@ -30,7 +33,7 @@ def get_bid_price(ticker):
 
 def calculate_perc_change(df):
     df_price = df['price']
-    df['perc'] = 100 * (df_price / df_price.shift(-1) - 1)
+    df['perc'] = 100 * (df_price / df_price.shift(1) - 1)
     df = df.dropna()
     return df['perc']
 
@@ -49,7 +52,7 @@ def write_df_to_file(df, csv_file, rows=None):
     elif len(df.index) < rows:
         df.iloc[:len(df.index)].to_csv(csv_file, index=False)
     else:
-        df.iloc[:rows].to_csv(csv_file, index=False)
+        df.iloc[1:].to_csv(csv_file, index=False)
 
 
 class TradeLuno:
@@ -75,9 +78,11 @@ class TradeLuno:
                      'XBTZAR': '0',
                      'ETHZAR': '0',
                      }
-        self.price_files = {'XBTZAR': 'repositories/kauta_web_app/data/prod_prices/XBTZAR.csv',
-                            'ETHZAR': 'repositories/kauta_web_app/data/prod_prices/ETHZAR.csv',
+        self.price_files = {'XBTZAR': 'C:/Users/chadg/GARD/Projects/kauta_web_app/data/prod_prices/XBTZAR.csv',
+                            'ETHZAR': 'C:/Users/chadg/GARD/Projects/kauta_web_app/data/prod_prices/ETHZAR.csv',
                             }
+                            # repositories/kauta_web_app/data/prod_prices/XBTZAR.csv
+                            # repositories/kauta_web_app/data/prod_prices/ETHZAR.csv
         self.trade_perc = 0.35
         self.set_key_id()
         self.set_secret_key()
@@ -219,17 +224,17 @@ class NeuralNetwork:
             if init:
                 w = np.random.rand(self.input_size, self.layer_1_size) - np.random.rand(self.input_size, self.layer_1_size)
             else:
-                w = read_nn_from_file('SMGANN_1000_research_W1_2021-05-21T10-48-09.csv')
+                w = read_nn_from_file('SMGANN_research_W1_2021-08-11T14-45-26_4000.csv', prod=False)
         elif weight == 2:
             if init:
                 w = np.random.rand(self.layer_1_size, self.layer_2_size) - np.random.rand(self.layer_1_size, self.layer_2_size)
             else:
-                w = read_nn_from_file('SMGANN_1000_research_W2_2021-05-21T10-48-09.csv')
+                w = read_nn_from_file('SMGANN_research_W2_2021-08-11T14-45-26_4000.csv', prod=False)
         elif weight == 3:
             if init:
                 w = np.random.rand(self.layer_2_size, self.output_size) - np.random.rand(self.layer_2_size, self.output_size)
             else:
-                w = read_nn_from_file('SMGANN_1000_research_W3_2021-05-21T10-48-09.csv')
+                w = read_nn_from_file('SMGANN_research_W3_2021-08-11T14-45-26_4000.csv', prod=False)
                 w = w.reshape((25, 1))
         else:
             pass
@@ -237,7 +242,7 @@ class NeuralNetwork:
         return w
 
 
-api_file = 'repositories/kauta_web_app/data/test_luno.csv'
+api_file = 'C:/Users/chadg/GARD/Projects/kauta_web_app/data/test_luno.csv'       # '/kauta_web_app/data/test_luno.csv'
 
 
 def main_nn(currency_pairs):
@@ -270,5 +275,5 @@ def main_nn(currency_pairs):
 
 
 if __name__ == '__main__':
-    currency_pairs = ['XBTZAR']                                                 #, 'ETHZAR'
+    currency_pairs = ['XBTZAR', 'ETHZAR']                                                 #, 'ETHZAR'
     main_nn(currency_pairs)
